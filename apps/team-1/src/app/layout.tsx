@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "design-kit/dist/style.css";
 import Provider from "./Provider";
 
 export const metadata: Metadata = {
