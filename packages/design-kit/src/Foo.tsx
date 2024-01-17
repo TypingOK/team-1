@@ -1,5 +1,7 @@
-export const Foo = () => {
-  console.log("Foo 호출됨");
-
-  return <div>test</div>;
+const Button = () => {
+  return (
+    <button className="font-extrabold text-2xl bg-primary-100">Button</button>
+  );
 };
+
+export default Button;

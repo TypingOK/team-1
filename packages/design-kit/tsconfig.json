@@ -23,6 +23,6 @@
       "@/assets/*": ["./src/assets/*"]
     }
   },
-  "include": ["src/**/*", "index.ts", "src/types/index.d.ts"],
+  "include": ["src/**/*", "src/index.ts", "src/types/index.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
