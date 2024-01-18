@@ -18,10 +18,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.3",
-    "react-resizable": "^3.0.5"
+    "react-resizable": "^3.0.5",
+    "design-kit": "*"
   },
   "devDependencies": {
-    "design-kit":"*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/node": "^20",
