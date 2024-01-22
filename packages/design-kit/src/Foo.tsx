@@ -6,7 +6,8 @@ const Button = ({ className }: { className: string }) => {
     <div>
       <Root
         className={cn("w-full bg-primary-50", className)}
-        htmlFor="firstName">
+        htmlFor="firstName"
+      >
         First name
       </Root>
       <input

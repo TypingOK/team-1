@@ -1,27 +1,33 @@
-const BASE_URL = "http://localhost:3000/api";
+import PocketBase from "pocketbase";
 
-export const apiRequest = async <T>(
-  endpoint: string,
-  method = "GET",
-  data: any = null,
-): Promise<T> => {
-  const headers: HeadersInit = {
-    "Content-Type": "application/json",
+const pb = new PocketBase("http://54.180.1.20:8090");
+
+export interface userTypes {
+  username: string;
+  email: string;
+  emailVisibility?: boolean;
+  password?: string;
+  passwordConfirm?: string;
+  disable: boolean;
+  description?: string;
+  sfaclogUrl?: string;
+  category?: (
+    | "frontend"
+    | "backend"
+    | "data"
+    | "server"
+    | "dba"
+    | "logs"
+    | "android"
+  )[];
+  sns?: {
+    email?: string;
+    github?: string;
+    instagram?: string;
+    sfacfolio?: string;
+    rocketpunch?: string;
+    youtube?: string;
   };
-  const config: RequestInit = {
-    method,
-    headers,
-  };
+}
 
-  if (data) {
-    config.body = JSON.stringify(data);
-  }
-
-  const response = await fetch(`${BASE_URL}/${endpoint}`, config);
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
-
-  return response.json() as Promise<T>;
-};
+export const record = (data: userTypes) => pb.collection("users").create(data);
