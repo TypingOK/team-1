@@ -1,6 +1,12 @@
 "use client";
 
-import { record, userTypes } from "@/utils/api";
+import {
+  handleSignup,
+  handleLogin,
+  userTypes,
+  handleGetToken,
+  handleSignout,
+} from "@/utils/api";
 import { Test } from "./test";
 
 export default function Home() {
@@ -22,8 +28,23 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       hello world
-      <button onClick={async () => console.log(await record(data))}>
+      <button onClick={async () => console.log(await handleSignup(data))}>
         회원가입
+      </button>
+      <button
+        onClick={async () =>
+          console.log(await handleLogin("test1@team1.com", "Team123!"))
+        }
+      >
+        로그인
+      </button>
+      <button onClick={() => console.log(handleGetToken())}>토큰 확인</button>
+      <button
+        onClick={async () =>
+          console.log(await handleSignout("oruxjqogzy827dl"))
+        }
+      >
+        회원탈퇴
       </button>
       <Test />
     </main>
