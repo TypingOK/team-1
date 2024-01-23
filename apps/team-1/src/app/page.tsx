@@ -6,10 +6,17 @@ import {
   userTypes,
   handleGetToken,
   handleSignout,
+  handleUploadImage,
+  handleGetTargetLogs,
+  handleGetAllTags,
+  logsTypes,
 } from "@/utils/api";
 import { Test } from "./test";
+import { ChangeEvent, useState } from "react";
 
 export default function Home() {
+  const [tags, setTags] = useState<string[]>([]);
+  const [logs, setLogs] = useState<logsTypes[]>();
   const data: userTypes = {
     username: "test_username",
     email: "test@example.com",
@@ -25,6 +32,31 @@ export default function Home() {
     },
   };
 
+  const handleUploadFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const formData = new FormData();
+
+    if (event.target.files !== null) {
+      formData.append("images", event.target.files[0]);
+    }
+
+    await handleUploadImage(formData);
+  };
+
+  const getTags = async () => {
+    const tags = new Set();
+    const res = await handleGetAllTags();
+
+    res.forEach(item => tags.add(item.tagTitle));
+
+    setTags(Array.from(tags) as string[]);
+  };
+
+  const getLogs = async (tag: string) => {
+    const res: logsTypes[] = await handleGetTargetLogs(tag);
+
+    setLogs(res);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       hello world
@@ -33,7 +65,7 @@ export default function Home() {
       </button>
       <button
         onClick={async () =>
-          console.log(await handleLogin("test1@team1.com", "Team123!"))
+          console.log(await handleLogin("test@example.com", "12345678"))
         }
       >
         로그인
@@ -46,6 +78,15 @@ export default function Home() {
       >
         회원탈퇴
       </button>
+      <input type="file" onChange={handleUploadFile} />
+      <button onClick={getTags}>태그 불러오기</button>
+      {tags.map(tag => (
+        <div key={tag} onClick={async () => getLogs(tag)}>
+          {tag}
+        </div>
+      ))}
+      {logs &&
+        logs.map(item => <div key={item.id}>{item.expand.logId.title}</div>)}
       <Test />
     </main>
   );
