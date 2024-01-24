@@ -1,4 +1,4 @@
-export interface userTypes {
+export interface joinUserTypes {
   username: string;
   email: string;
   emailVisibility?: boolean;

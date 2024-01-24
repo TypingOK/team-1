@@ -11,12 +11,12 @@ import {
 } from "@/utils/api";
 import { Test } from "./test";
 import { ChangeEvent, useState } from "react";
-import { filteredLogsTypes, userTypes } from "@/types";
+import { filteredLogsTypes, joinUserTypes } from "@/types";
 
 export default function Home() {
   const [tags, setTags] = useState<string[]>([]);
   const [logs, setLogs] = useState<filteredLogsTypes[]>();
-  const data: userTypes = {
+  const data: joinUserTypes = {
     username: "test_username",
     email: "test@example.com",
     emailVisibility: true,
