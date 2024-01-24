@@ -6,9 +6,3 @@ export interface replyCommentsTypes extends RecordModel {
   userId: string;
   logId: string;
 }
-
-export interface filteredCommentsTypes extends replyCommentsTypes {
-  expand: {
-    logId: replyCommentsTypes;
-  };
-}

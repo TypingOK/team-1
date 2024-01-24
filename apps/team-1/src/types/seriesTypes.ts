@@ -1,6 +1,6 @@
 import { RecordModel } from "pocketbase";
 
-export interface SeriesTypes extends RecordModel {
+export interface seriesTypes extends RecordModel {
   userId: string;
   seriesTitle: string;
 }
