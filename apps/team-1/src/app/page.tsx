@@ -3,20 +3,19 @@
 import {
   handleSignup,
   handleLogin,
-  userTypes,
   handleGetToken,
   handleSignout,
   handleUploadImage,
   handleGetTargetLogs,
   handleGetAllTags,
-  logsTypes,
 } from "@/utils/api";
 import { Test } from "./test";
 import { ChangeEvent, useState } from "react";
+import { filteredLogsTypes, userTypes } from "@/types";
 
 export default function Home() {
   const [tags, setTags] = useState<string[]>([]);
-  const [logs, setLogs] = useState<logsTypes[]>();
+  const [logs, setLogs] = useState<filteredLogsTypes[]>();
   const data: userTypes = {
     username: "test_username",
     email: "test@example.com",
@@ -52,7 +51,7 @@ export default function Home() {
   };
 
   const getLogs = async (tag: string) => {
-    const res: logsTypes[] = await handleGetTargetLogs(tag);
+    const res: filteredLogsTypes[] = await handleGetTargetLogs(tag);
 
     setLogs(res);
   };
@@ -86,7 +85,12 @@ export default function Home() {
         </div>
       ))}
       {logs &&
-        logs.map(item => <div key={item.id}>{item.expand.logId.title}</div>)}
+        logs.map(item => (
+          <div key={item.id}>
+            <p>{item.expand.logId.title}</p>
+            <p>{item.expand.logId.created}</p>
+          </div>
+        ))}
       <Test />
     </main>
   );
