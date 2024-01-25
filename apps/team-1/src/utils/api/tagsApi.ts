@@ -4,7 +4,7 @@ import { pb } from ".";
 export const handleTagCreate = async (data: tagDataTypes): Promise<tagTypes> =>
   await pb.collection("tags").create(data);
 
-export const handleGetAllTags = async (): Promise<tagTypes[]> =>
+export const handleTagsGetAllList = async (): Promise<tagTypes[]> =>
   await pb.collection("tags").getFullList();
 
 export const handleTagGetByTitle = async (target: string): Promise<tagTypes> =>
