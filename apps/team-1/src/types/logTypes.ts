@@ -12,6 +12,16 @@ export interface logsTypes extends RecordModel {
   disable: boolean;
 }
 
+export interface logDataTypes {
+  userId: string;
+  seriesId?: string[];
+  title: string;
+  content: string;
+  private?: boolean;
+  disable?: boolean;
+  tags?: string;
+}
+
 export interface filteredLogsTypes extends logsTypes {
   expand: {
     logId: logsTypes;

@@ -10,3 +10,4 @@ export * from "./replyCommentsTypes";
 export * from "./seriesTypes";
 export * from "./tagTypes";
 export * from "./userTypes";
+export * from "./logsTagsMapTypes";
