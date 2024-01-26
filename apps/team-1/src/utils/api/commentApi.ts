@@ -6,6 +6,7 @@ import { pb } from ".";
 //     filter: 'created >= "2022-01-01 00:00:00" && someField1 != someField2',
 // });
 
+
 export const handleCommentGetByLogId = async (
   logId: string,
 ): Promise<commentsTypes[]> =>
@@ -13,7 +14,6 @@ export const handleCommentGetByLogId = async (
     filter: `logId.id='${logId}'`,
     sort: "created",
   });
-
 export const handleCommentGetByUserId = async (
   userId: string,
 ): Promise<commentsTypes[]> =>
