@@ -4,7 +4,7 @@ import {
   logsTagsMapTypes,
 } from "@/types";
 import { pb } from ".";
-import { handleTagGetByTitle } from "./tags";
+import { handleTagGetByTitle } from "./tagsApi";
 
 export const handleLogsTagsMapCreate = async (
   data: logsTagsMapDataTypes,
@@ -17,7 +17,6 @@ export const handleLogsTagsMapGetByLogId = async (
   await pb.collection("logs_tags_map").getFullList({
     filter: `logId='${target}'`,
     expand: "logId",
-    requestKey: null,
   });
 
 export const handleLogsTagsMapGetByTagId = async (
@@ -26,7 +25,6 @@ export const handleLogsTagsMapGetByTagId = async (
   await pb.collection("logs_tags_map").getFullList({
     filter: `tagId='${target}'`,
     expand: "logId",
-    requestKey: null,
   });
 
 export const handleLogsTagsMapGetByTagTitle = async (

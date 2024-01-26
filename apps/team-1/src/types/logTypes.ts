@@ -1,4 +1,5 @@
 import { RecordModel } from "pocketbase";
+import { userTypes } from ".";
 
 export interface logsTypes extends RecordModel {
   userId: string;
