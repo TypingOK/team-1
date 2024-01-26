@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/assets/*": ["./src/assets/*"]
+      "@/assets/*": ["./src/assets/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*", "src/index.ts", "src/types/index.d.ts"],

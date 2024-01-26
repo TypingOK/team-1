@@ -1,4 +1,4 @@
 import "./tailwind.css";
-import Button from "./Foo";
+import Button from "@/components/button/Button";
 
 export { Button };

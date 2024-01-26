@@ -13,6 +13,7 @@ import {
 } from "@/utils/api";
 import { Test } from "./test";
 import { ChangeEvent, useState } from "react";
+import { Button } from "design-kit";
 
 export default function Home() {
   const [tags, setTags] = useState<string[]>([]);
@@ -70,6 +71,7 @@ export default function Home() {
       >
         로그인
       </button>
+      <Button variant="primary"></Button>
       <button onClick={() => console.log(handleGetToken())}>토큰 확인</button>
       <button
         onClick={async () =>
