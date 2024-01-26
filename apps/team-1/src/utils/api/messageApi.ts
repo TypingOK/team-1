@@ -18,5 +18,6 @@ interface messagesData {
   contents: string;
 }
 
-export const handleCreateMessages = async (data: messagesData): Promise<messagesTypes> =>
-  await pb.collection("messages").create(data);
+export const handleCreateMessages = async (
+  data: messagesData,
+): Promise<messagesTypes> => await pb.collection("messages").create(data);
