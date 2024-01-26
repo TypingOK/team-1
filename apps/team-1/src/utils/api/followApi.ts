@@ -1,13 +1,13 @@
 import { followTypes } from "@/types";
 import { pb } from ".";
 
-export const handleGetFollow = async (
-  followerId: string,
-  followingId: string,
-) =>
-  await pb.collection("follow").getFullList({
-    filter: `followerId = '${followerId}'&&followingId='${followingId}'`,
-  });
+// export const handleGetFollow = async (
+//   followerId: string,
+//   followingId: string,
+// ) =>
+//   await pb.collection("follow").getFullList({
+//     filter: `followerId = '${followerId}'&&followingId='${followingId}'`,
+//   });
 
 export const handleGetFollower = async (id: string): Promise<followTypes[]> => {
   return await pb.collection("follow").getFullList({
