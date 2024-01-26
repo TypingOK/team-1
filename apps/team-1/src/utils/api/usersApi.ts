@@ -11,3 +11,6 @@ export const handleGetToken = () => pb.authStore.token;
 
 export const handleSignout = async (id: string) =>
   await pb.collection("users").delete(id);
+
+export const handleUserList = async (id: string) =>
+  await pb.collection("users").getFullList({ filter: `id!='${id}'` });
