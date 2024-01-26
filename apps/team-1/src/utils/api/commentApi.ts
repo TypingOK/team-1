@@ -6,21 +6,31 @@ import { pb } from ".";
 //     filter: 'created >= "2022-01-01 00:00:00" && someField1 != someField2',
 // });
 
-export const handleGetLogComments = async (
+
+export const handleCommentGetByLogId = async (
   logId: string,
 ): Promise<commentsTypes[]> =>
   await pb.collection("comments").getFullList({
     filter: `logId.id='${logId}'`,
     sort: "created",
   });
+export const handleCommentGetByUserId = async (
+  userId: string,
+): Promise<commentsTypes[]> =>
+  await pb.collection("comments").getFullList({
+    filter: `userId.id='${userId}'`,
+    sort: "-created",
+  });
 
-export const handleCreateComment = async (comment: commentsTypes) =>
-  await pb.collection("comments").create(comment);
+export const handleCommentCreate = async (
+  comment: commentsTypes,
+): Promise<commentsTypes[]> => await pb.collection("comments").create(comment);
 
-export const handleDeleteComment = async (recordID: string) =>
+export const handleCommentDelete = async (recordID: string) =>
   await pb.collection("comments").delete(recordID);
 
-export const handleUpdateComment = async (
+export const handleCommentUpdate = async (
   recordID: string,
   updateComment: commentsTypes,
-) => await pb.collection("comments").update(recordID, updateComment);
+): Promise<commentsTypes[]> =>
+  await pb.collection("comments").update(recordID, updateComment);
