@@ -5,3 +5,9 @@ export interface commentsTypes extends RecordModel {
   logId: string;
   content: string;
 }
+
+export interface commentsDataTypes {
+  userId: string;
+  logId: string;
+  content: string;
+}

@@ -1,6 +1,6 @@
 import { ExpandLogTypes, logDataTypes, logsTypes } from "@/types";
 import { pb } from ".";
-import { ListResult } from "pocketbase";
+import { ListOptions, ListResult } from "pocketbase";
 
 export const handleLogCreate = async (data: logDataTypes): Promise<logsTypes> =>
   await pb.collection("logs").create(data);
@@ -11,8 +11,9 @@ export const handleLogGetAllList = async (): Promise<ExpandLogTypes[]> =>
 export const handleLogGetList = async (
   offset: number = 0,
   limit: number = 30,
+  options?: ListOptions,
 ): Promise<ListResult<ExpandLogTypes>> =>
-  await pb.collection("logs").getList(0 * offset, 1 * limit);
+  await pb.collection("logs").getList(0 * offset, 1 * limit, options);
 
 export const handleLogGetById = async (id: string): Promise<ExpandLogTypes> =>
   await pb.collection("logs").getOne(id, {
@@ -21,8 +22,15 @@ export const handleLogGetById = async (id: string): Promise<ExpandLogTypes> =>
 
 export const handleLogGetBySeriesId = async (
   id: string,
+  options?: ListOptions,
 ): Promise<ExpandLogTypes[]> =>
   await pb.collection("logs").getFullList({
+    ...options,
     filter: `seriesId='${id}'`,
     expand: "userId",
   });
+
+export const handleLogUpdate = async (
+  id: string,
+  data: logDataTypes,
+): Promise<logsTypes> => await pb.collection("logs").update(id, data);
