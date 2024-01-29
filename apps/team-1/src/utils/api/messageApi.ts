@@ -1,23 +1,19 @@
-import { ExpandMessageTypes, messagesTypes } from "@/types";
+import { ExpandMessageTypes, messagesDataTypes, messagesTypes } from "@/types";
 import { pb } from ".";
+import { ListOptions } from "pocketbase";
 
-export const handleGetMessages = async (
+export const handleMessagesGetList = async (
   senderId: string,
   receiverId: string,
+  options?: ListOptions,
 ): Promise<ExpandMessageTypes[]> => {
   return await pb.collection("messages").getFullList({
+    ...options,
     filter: `sender='${senderId}' && receiver='${receiverId}'||sender='${receiverId}' && receiver='${senderId}'`,
     expand: "receiver",
-    sort: "created",
   });
 };
 
-interface messagesData {
-  sender: string;
-  receiver: string;
-  contents: string;
-}
-
-export const handleCreateMessages = async (
-  data: messagesData,
+export const handleMessagesCreate = async (
+  data: messagesDataTypes,
 ): Promise<messagesTypes> => await pb.collection("messages").create(data);
