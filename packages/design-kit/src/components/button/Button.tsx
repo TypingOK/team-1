@@ -16,6 +16,7 @@ const buttonVariants = cva(
       variant: {
         default: `bg-neutral-0 border border-neutral-20 text-neutral-70`,
         primary: `bg-primary-100 text-neutral-0`,
+        ghost: `bg-none border-none text-neutral-70`,
       },
     },
     defaultVariants: {
