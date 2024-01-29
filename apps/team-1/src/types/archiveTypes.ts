@@ -6,11 +6,11 @@ export interface archiveTypes extends RecordModel {
   logId: string[];
 }
 
-export interface ExpandarchiveTypes extends archiveTypes {
+export interface ExpandArchiveTypes extends archiveTypes {
   expand?: { logId: ExpandLogTypes[] };
 }
 
-export interface archiveDataTypes extends RecordModel {
+export interface archiveDataTypes {
   userId: string;
   logId: string[];
 }

@@ -12,3 +12,9 @@ export interface ExpandMessageTypes extends messagesTypes {
     receiver: userTypes;
   };
 }
+
+export interface messagesDataTypes {
+  sender: string;
+  receiver: string;
+  contents: string;
+}
