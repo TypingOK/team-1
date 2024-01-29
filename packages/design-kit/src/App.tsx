@@ -1,8 +1,7 @@
 import { Button } from "@/components/button/Button";
 import { Badge } from "./components/badge/Badge";
 
-import { useEffect, useState } from "react";
-import CarouselExample from "./components/swiper/example";
+import CarouselExample from "@/components/swiper/Example";
 
 function App() {
   return (
