@@ -1,36 +1,32 @@
-import { followTypes } from "@/types";
+import { followDataTypes, followTypes } from "@/types";
 import { pb } from ".";
+import { ListOptions } from "pocketbase";
 
-// export const handleGetFollow = async (
-//   followerId: string,
-//   followingId: string,
-// ) =>
-//   await pb.collection("follow").getFullList({
-//     filter: `followerId = '${followerId}'&&followingId='${followingId}'`,
-//   });
-
-export const handleGetFollower = async (id: string): Promise<followTypes[]> => {
-  return await pb.collection("follow").getFullList({
-    filter: `followingId='${id}'`,
-    expand: "followerId, followingId",
-    sort: "created",
-  });
-};
-
-export const handleGetFollowing = async (
+export const handleFollowerGetByUserId = async (
   id: string,
+  options?: ListOptions,
 ): Promise<followTypes[]> => {
   return await pb.collection("follow").getFullList({
-    filter: `followerId='${id}'`,
-    expand: "followerId, followingId",
-    sort: "created",
+    ...options,
+    filter: `followingId='${id}'`,
+    expand: "followerId",
   });
 };
 
-interface followData {
-  followerId: string;
-  followingId: string;
-}
+export const handleFollowingGetByUserId = async (
+  id: string,
+  options?: ListOptions,
+): Promise<followTypes[]> => {
+  return await pb.collection("follow").getFullList({
+    ...options,
+    filter: `followerId='${id}'`,
+    expand: "followingId",
+  });
+};
 
-export const handleCreateFollow = async (data: followData) =>
-  await pb.collection("follow").create(data);
+export const handleFollowCreate = async (
+  data: followDataTypes,
+): Promise<followTypes> => await pb.collection("follow").create(data);
+
+export const handleFollowDelete = async (id: string): Promise<boolean> =>
+  await pb.collection("follow").delete(id);

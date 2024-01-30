@@ -5,7 +5,7 @@ export interface seriesTypes extends RecordModel {
   seriesTitle: string;
 }
 
-export interface seriesDataTypes extends seriesTypes {
+export interface seriesDataTypes {
   userId: string;
   seriesTitle: string;
 }

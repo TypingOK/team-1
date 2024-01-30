@@ -25,7 +25,6 @@ const SelectTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      
     </SelectPrimitive.Trigger>
   );
 });
