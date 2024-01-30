@@ -25,9 +25,7 @@ const SelectTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <SelectIcon className="h-full flex items-center ml-auto">
-        <img src="Arrow/down.svg" alt="선택 화살표" />
-      </SelectIcon>
+      
     </SelectPrimitive.Trigger>
   );
 });

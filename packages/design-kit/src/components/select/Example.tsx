@@ -3,6 +3,7 @@ import {
   Select,
   SelectContent,
   SelectGroup,
+  SelectIcon,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -23,10 +24,12 @@ const SelectExample = () => {
             console.log(e);
             if (e === "직접 입력") setDirectState(true);
           }}
-          open={true}
         >
           <SelectTrigger className="w-80">
             <SelectValue placeholder="Text" />
+            <SelectIcon className="h-full flex items-center ml-auto">
+              <img src="Arrow/down.svg" alt="선택 화살표" />
+            </SelectIcon>
           </SelectTrigger>
           <SelectContent className="w-80">
             <SelectGroup>
