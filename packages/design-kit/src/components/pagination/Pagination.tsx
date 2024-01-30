@@ -46,7 +46,7 @@ const PaginationRewindButton = React.forwardRef<
       {...props}
       ref={ref}
     >
-      <img src="arrow/rewind.svg" />
+      <img src="Arrow/rewind.svg" />
     </Button>
   );
 });
@@ -62,7 +62,7 @@ const PaginationPreviousButton = React.forwardRef<
       {...props}
       ref={ref}
     >
-      <img src="arrow/previous.svg" />
+      <img src="Arrow/previous.svg" />
     </Button>
   );
 });
@@ -78,7 +78,7 @@ const PaginationNextButton = React.forwardRef<
       {...props}
       ref={ref}
     >
-      <img src={`arrow/next.svg`}></img>
+      <img src={`Arrow/next.svg`}></img>
     </Button>
   );
 });
@@ -94,7 +94,7 @@ const PaginationFastForwardButton = React.forwardRef<
       {...props}
       ref={ref}
     >
-      <img src={`arrow/fastForward.svg`}></img>
+      <img src={`Arrow/fastForward.svg`}></img>
     </Button>
   );
 });

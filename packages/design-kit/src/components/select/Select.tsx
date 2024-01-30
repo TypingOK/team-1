@@ -18,15 +18,15 @@ const SelectTrigger = React.forwardRef<
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        `flex border border-neutral-40 rounded-[0.25rem] w-[10.3125rem] h-10 p-[0.625rem] `,
+        `flex border border-neutral-40 rounded-[0.25rem] w-[10.3125rem] h-10 p-[0.625rem] data-[state=open]:border-b-0 data-[state=open]:rounded-b-none`,
         className,
       )}
       ref={ref}
       {...props}
     >
       {children}
-      <SelectIcon className="ml-auto">
-        <img src="arrow/dropdown.svg" alt="선택 화살표" />
+      <SelectIcon className="h-full flex items-center ml-auto">
+        <img src="Arrow/down.svg" alt="선택 화살표" />
       </SelectIcon>
     </SelectPrimitive.Trigger>
   );
@@ -35,15 +35,16 @@ const SelectTrigger = React.forwardRef<
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithRef<typeof SelectPrimitive.Content>
->(({ className, position = "item-aligned", children, ...props }, ref) => {
+>(({ className, position = "popper", children, ...props }, ref) => {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         position={position}
+        alignOffset={0}
         ref={ref}
         {...props}
         className={cn(
-          `flex border border-neutral-40 rounded-[0.25rem] w-[10.3125rem] h-10 p-[0.625rem] `,
+          `border border-neutral-40 flex data-[state=open]:border-t-0 data-[state=open]:rounded-t-none rounded-[0.25rem] w-[10.3125rem] min-h-10 p-[0.625rem] `,
           className,
         )}
       >
@@ -56,15 +57,14 @@ const SelectContent = React.forwardRef<
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithRef<typeof SelectPrimitive.Item>
->(({ className, children, value, ...props }, ref) => {
+>(({ className, children, ...props }, ref) => {
   return (
     <SelectPrimitive.Item
-      value={value}
       className={cn(`hover:text-primary-100`, className)}
       ref={ref}
       {...props}
     >
-      {children}
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   );
 });

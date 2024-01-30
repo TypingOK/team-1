@@ -20,7 +20,8 @@ function App() {
       <div>
         <PaginationExample />
       </div>
-      <div>
+      
+      <div className="w-[22rem] flex justify-center">
         {/* <DropDownExample /> */}
         <SelectExample />
       </div>
