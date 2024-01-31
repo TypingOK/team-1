@@ -3,7 +3,7 @@ import {
   HeroImageBadge,
   HeroImageTitle,
   HeroImageWrapper,
-} from "@/components/card/HeroImage";
+} from "@/components/card/heroImage/HeroImage";
 
 const HeroImageExample = () => {
   return (

@@ -6,14 +6,19 @@ import PaginationExample from "./components/pagination/Example";
 // import DropDownExample from "./components/dropDown/Example";
 import SelectExample from "./components/select/Example";
 import DataPickerExample from "./components/datepicker/Example";
-import Indicator from "./components/indicator/Indicator";
 import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
-import HeroImageExample from "./components/card/HeroImageExample";
+import HeroImageExample from "./components/card/heroImage/HeroImageExample";
+import MyCardExample from "./components/card/myCard/Example";
 
 function App() {
   return (
     <>
+      <div>
+        <MyCardExample />
+      </div>
+
       <button className="text-2xl">test</button>
+
       <Button variant={"primary"} popupSize={"big"}>
         버튼
       </Button>
