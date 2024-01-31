@@ -27,9 +27,6 @@ export default function Login() {
     }
   };
 
-  console.log("이메일 에러", !!errors?.email?.message);
-  console.log("비밀번호 에러", !!errors?.password?.message);
-
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
