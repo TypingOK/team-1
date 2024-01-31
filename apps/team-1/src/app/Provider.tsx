@@ -7,9 +7,9 @@ type providerType = {
   children: React.ReactNode;
 };
 
-const Provider = ({ children }: providerType) => {
-  const [queryClient] = useState(new QueryClient());
+export const queryClient = new QueryClient();
 
+const Provider = ({ children }: providerType) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
