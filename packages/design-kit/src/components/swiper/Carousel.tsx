@@ -31,6 +31,7 @@ type CarouselContextProps = {
   previousHandler: () => void;
   nextHandler: () => void;
   canScrollPrev: boolean;
+  scrollTo: (index: number) => void;
   canScrollNext: boolean;
 } & CarouselProps;
 
@@ -58,6 +59,15 @@ const Carousel = forwardRef<
       api.scrollPrev();
     }
   }, [api]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (api) {
+        api.scrollTo(index);
+      }
+    },
+    [api],
+  );
 
   const nextHandler = useCallback(() => {
     if (api) {
@@ -97,6 +107,7 @@ const Carousel = forwardRef<
         opts,
         previousHandler,
         nextHandler,
+        scrollTo,
         canScrollPrev,
         canScrollNext,
       }}
@@ -156,7 +167,7 @@ const CarouselPrevButton = forwardRef<
   return (
     <Button
       ref={ref}
-      variant={`default`}
+      variant={`nomal`}
       className={cn(
         `absolute -left-12 -translate-y-1/2 top-1/2 rounded-full w-[50px] h-[50px] p-0`,
         className,
@@ -170,6 +181,24 @@ const CarouselPrevButton = forwardRef<
   );
 });
 
+const CarouselDotButton = forwardRef<
+  HTMLButtonElement,
+  React.HTMLAttributes<HTMLButtonElement> & { index: number }
+>(({ className, children, index, ...rest }) => {
+  const { scrollTo } = useCarousel();
+  return (
+    <button
+      className={cn(``, className)}
+      onClick={() => {
+        scrollTo(index);
+      }}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+});
+
 const CarouselNextButton = forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement>
@@ -179,7 +208,7 @@ const CarouselNextButton = forwardRef<
   return (
     <Button
       ref={ref}
-      variant={`default`}
+      variant={`nomal`}
       className={cn(
         `absolute rounded-full -right-12 -translate-y-1/2 top-1/2  w-[50px] h-[50px] p-0`,
         className,
@@ -200,4 +229,5 @@ export {
   CarouselItem,
   CarouselNextButton,
   CarouselPrevButton,
+  CarouselDotButton,
 };

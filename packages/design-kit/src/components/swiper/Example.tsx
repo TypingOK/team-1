@@ -5,6 +5,7 @@ import {
   CarouselNextButton,
   CarouselPrevButton,
   type CarouselApi,
+  CarouselDotButton,
 } from "@/components/swiper/Carousel";
 import { Button } from "@/components/button/Button";
 import { useEffect, useState } from "react";
@@ -82,6 +83,10 @@ const CarouselExample = () => {
             </Button>
           </CarouselItem>
         </CarouselContainer>
+        <CarouselDotButton index={0}>1</CarouselDotButton>
+        <CarouselDotButton index={1}>2</CarouselDotButton>
+        <CarouselDotButton index={2}>3</CarouselDotButton>
+        <CarouselDotButton index={3}>4</CarouselDotButton>
         <CarouselPrevButton />
         <CarouselNextButton />
       </Carousel>

@@ -1,0 +1,8 @@
+.react-datepicker__header {
+  background-color: #fff !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker {
+  padding: 1rem;
+}
