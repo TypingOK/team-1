@@ -8,6 +8,7 @@ import SelectExample from "./components/select/Example";
 import DataPickerExample from "./components/datepicker/Example";
 import Indicator from "./components/indicator/Indicator";
 import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
+import HeroImageExample from "./components/card/HeroImageExample";
 
 function App() {
   return (
@@ -38,7 +39,9 @@ function App() {
       <div className="w-full justify-center flex">
         <CarouselExampleRightSection />
       </div>
-
+      <div className="w-full justify-center flex">
+        <HeroImageExample />
+      </div>
       <div>
         <DataPickerExample />
       </div>

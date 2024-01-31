@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 const CarouselExample = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  
+
   useEffect(() => {
     if (!api) {
       return;
