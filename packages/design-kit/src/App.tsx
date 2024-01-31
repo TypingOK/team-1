@@ -6,6 +6,8 @@ import PaginationExample from "./components/pagination/Example";
 // import DropDownExample from "./components/dropDown/Example";
 import SelectExample from "./components/select/Example";
 import DataPickerExample from "./components/datepicker/Example";
+import Indicator from "./components/indicator/Indicator";
+import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
 
 function App() {
   return (
@@ -29,10 +31,12 @@ function App() {
       <div>
         <PaginationExample />
       </div>
-
       <div className="w-[22rem] flex justify-center">
         {/* <DropDownExample /> */}
         <SelectExample />
+      </div>
+      <div className="w-full justify-center flex">
+        <CarouselExampleRightSection />
       </div>
 
       <div>
