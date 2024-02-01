@@ -1,7 +1,9 @@
 "use client";
-import { useForm, SubmitHandler, useWatch } from "react-hook-form";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import React, { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { joinUserState } from "@/recoil/joinUserState";
+import { useSetRecoilState } from "recoil";
 
 interface signUpUserTypes {
   username: string;
@@ -9,12 +11,13 @@ interface signUpUserTypes {
   domain: string;
   password: string;
   passwordConfirm: string;
-  term: boolean;
+  term1: boolean;
 }
 
 export default function Singup() {
   const [checkList, setCheckList] = useState<string[]>([]);
-  const [buttonColor, setButtonColor] = useState<boolean>(false);
+  const setUserData = useSetRecoilState(joinUserState);
+  const [pwMatch, setPwMatch] = useState<boolean>(false);
 
   // 체크리스트 전체 동의에 필요한 변수
   const checkAll = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,15 +38,20 @@ export default function Singup() {
     register,
     getValues,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm<signUpUserTypes>();
+
   const onSubmit: SubmitHandler<signUpUserTypes> = async data => {
     const emailWithDomain = `${data.email}@${getValues("domain")}`;
     const signInData = { ...data, email: emailWithDomain };
-    console.log(signInData);
-    // const res = await handleSignup(signInData);
-    // router.push("/signup2");
+    setUserData(oldState => ({
+      ...oldState,
+      username: signInData.username,
+      email: signInData.email,
+      password: signInData.password,
+      passwordConfirm: signInData.passwordConfirm,
+    }));
+    router.push("/signup2");
     return signInData;
   };
 
@@ -69,6 +77,7 @@ export default function Singup() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
+        <div>회원가입</div>
         <label>이름</label>
         <input
           className={`${!!errors?.username?.message ? "border-system-warning" : ""} border`}
@@ -111,8 +120,6 @@ export default function Singup() {
             <p className="text-system-warning">{errors?.domain?.message}</p>
           )}
         </div>
-
-        {/* <button>인증번호 요청</button> */}
       </div>
       <div>
         <label>비밀번호</label>
@@ -136,22 +143,26 @@ export default function Singup() {
       <div>
         <label>비밀번호 확인</label>
         <input
-          className={`${!!errors?.passwordConfirm?.message ? "border-system-warning" : ""} border`}
+          className={`${!!errors?.passwordConfirm?.message ? (pwMatch ? "" : "border-system-warning") : ""} border`}
           {...register("passwordConfirm", {
             required: "비밀번호 확인을 입력해주세요.",
-            validate: {
-              check: val => {
-                if (getValues("password") !== val) {
-                  return "비밀번호가 일치하지 않습니다.";
-                }
-              },
+            validate: value => {
+              if (getValues("password") === value) {
+                setPwMatch(true);
+                return true;
+              } else {
+                setPwMatch(false);
+                return "비밀번호가 일치하지 않습니다.";
+              }
             },
           })}
         />
-        {errors?.passwordConfirm?.message && (
+        {errors?.passwordConfirm?.message ? (
           <p className="text-system-warning">
             {errors?.passwordConfirm?.message}
           </p>
+        ) : (
+          pwMatch && <p> 비밀번호가 일치합니다. </p>
         )}
       </div>
       <div>
@@ -170,7 +181,9 @@ export default function Singup() {
           <div style={{ display: "flex" }}>
             <input
               type="checkbox"
-              name="term1"
+              {...register("term1", {
+                required: "본인인증 약관에 동의해주세요.",
+              })}
               onChange={check}
               checked={checkList.includes("term1") ? true : false}
             />
@@ -214,6 +227,9 @@ export default function Singup() {
             />
             <div>서비스 이용약관 동의</div>
           </div>
+          {errors.term1 && (
+            <p className="text-system-warning">{errors.term1.message}</p>
+          )}
         </div>
       </div>
       <input type="submit" value="다음으로 이동" />
