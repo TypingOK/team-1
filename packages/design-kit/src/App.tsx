@@ -9,15 +9,17 @@ import DataPickerExample from "./components/datepicker/Example";
 import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
 import HeroImageExample from "./components/card/heroImage/HeroImageExample";
 import MyCardExample from "./components/card/myCard/Example";
+import { Input } from "./components/input/Input";
 
 function App() {
   return (
     <>
       <div>
+        <Input className="border-b-system-warning" />
+      </div>
+      <div>
         <MyCardExample />
       </div>
-
-      <button className="text-2xl">test</button>
 
       <Button variant={"primary"} popupSize={"big"}>
         버튼

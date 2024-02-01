@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsc && vite build",
-    "build": "tsc && vite build",
+    "build": "vite",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
