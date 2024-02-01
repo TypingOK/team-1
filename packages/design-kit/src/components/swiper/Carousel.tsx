@@ -13,6 +13,7 @@ import useEmblaCarousel, {
 
 import { cn } from "@/utils";
 import { Button } from "../button/Button";
+import Indicator from "../indicator/Indicator";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -176,15 +177,15 @@ const CarouselPrevButton = forwardRef<
       onClick={previousHandler}
       {...props}
     >
-      {`<`}
+      <img src="Arrow/previous.svg" alt="이전" />
     </Button>
   );
 });
 
 const CarouselDotButton = forwardRef<
   HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement> & { index: number }
->(({ className, children, index, ...rest }) => {
+  React.HTMLAttributes<HTMLButtonElement> & { index: number; blue?: boolean }
+>(({ className, children, blue = false, index, ...rest }) => {
   const { scrollTo } = useCarousel();
   return (
     <button
@@ -194,7 +195,8 @@ const CarouselDotButton = forwardRef<
       }}
       {...rest}
     >
-      {children}
+      {/* {children} */}
+      <Indicator blue={blue} />
     </button>
   );
 });
@@ -217,7 +219,7 @@ const CarouselNextButton = forwardRef<
       onClick={nextHandler}
       {...props}
     >
-      {`>`}
+      <img src="Arrow/next.svg" alt="이전" />
     </Button>
   );
 });

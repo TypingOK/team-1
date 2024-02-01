@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 const CarouselExample = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  console.log(current);
+
   useEffect(() => {
     if (!api) {
       return;
@@ -83,10 +83,24 @@ const CarouselExample = () => {
             </Button>
           </CarouselItem>
         </CarouselContainer>
-        <CarouselDotButton index={0}>1</CarouselDotButton>
-        <CarouselDotButton index={1}>2</CarouselDotButton>
-        <CarouselDotButton index={2}>3</CarouselDotButton>
-        <CarouselDotButton index={3}>4</CarouselDotButton>
+        <div className="w-full flex justify-center mb-10">
+          <CarouselDotButton
+            index={0}
+            blue={current - 1 === 0}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={1}
+            blue={current - 1 === 1}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={2}
+            blue={current - 1 === 2}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={3}
+            blue={current - 1 === 3}
+          ></CarouselDotButton>
+        </div>
         <CarouselPrevButton />
         <CarouselNextButton />
       </Carousel>

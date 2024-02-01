@@ -6,11 +6,19 @@ import PaginationExample from "./components/pagination/Example";
 // import DropDownExample from "./components/dropDown/Example";
 import SelectExample from "./components/select/Example";
 import DataPickerExample from "./components/datepicker/Example";
+import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
+import HeroImageExample from "./components/card/heroImage/HeroImageExample";
+import MyCardExample from "./components/card/myCard/Example";
 
 function App() {
   return (
     <>
+      <div>
+        <MyCardExample />
+      </div>
+
       <button className="text-2xl">test</button>
+
       <Button variant={"primary"} popupSize={"big"}>
         버튼
       </Button>
@@ -29,12 +37,16 @@ function App() {
       <div>
         <PaginationExample />
       </div>
-
       <div className="w-[22rem] flex justify-center">
         {/* <DropDownExample /> */}
         <SelectExample />
       </div>
-
+      <div className="w-full justify-center flex">
+        <CarouselExampleRightSection />
+      </div>
+      <div className="w-full justify-center flex">
+        <HeroImageExample />
+      </div>
       <div>
         <DataPickerExample />
       </div>
