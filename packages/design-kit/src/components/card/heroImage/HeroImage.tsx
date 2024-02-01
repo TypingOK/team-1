@@ -1,5 +1,25 @@
 import { cn } from "@/utils";
-import React from "react";
+import { VariantProps, cva } from "class-variance-authority";
+import React, { HTMLAttributes } from "react";
+
+interface CardImageProps
+  extends HTMLAttributes<HTMLImageElement>,
+    VariantProps<typeof cardImageVariants> {}
+
+const cardImageVariants = cva(
+  `object-cover  rounded-[0.625rem] w-full h-full `,
+  {
+    variants: {
+      banner: {
+        true: `brightness-50 bg-neutral-100`,
+        false: `bg-neutral-50`,
+      },
+    },
+    defaultVariants: {
+      banner: false,
+    },
+  },
+);
 
 const HeroImageWrapper = React.forwardRef<
   HTMLDivElement,
@@ -19,18 +39,15 @@ const HeroImageWrapper = React.forwardRef<
   );
 });
 
-const HeroImage = React.forwardRef<
+const CardImage = React.forwardRef<
   HTMLImageElement,
-  React.HTMLAttributes<HTMLImageElement> & { src: string; alt?: string }
->(({ className, src, alt, ...props }, ref) => {
+  CardImageProps & { src: string; alt?: string }
+>(({ className, banner, src, alt, ...props }, ref) => {
   return (
     <img
       src={src}
       alt={alt}
-      className={cn(
-        `object-cover brightness-50 rounded-[0.625rem] w-full h-full bg-neutral-100`,
-        className,
-      )}
+      className={cn(cardImageVariants({ banner, className }))}
       {...props}
       ref={ref}
     ></img>
@@ -77,4 +94,4 @@ const HeroImageBadge = React.forwardRef<
   );
 });
 
-export { HeroImage, HeroImageBadge, HeroImageTitle, HeroImageWrapper };
+export { CardImage, HeroImageBadge, HeroImageTitle, HeroImageWrapper };
