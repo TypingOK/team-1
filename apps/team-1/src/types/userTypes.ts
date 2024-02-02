@@ -13,7 +13,7 @@ export interface joinUserTypes {
     | "data"
     | "server"
     | "dba"
-    | "logs"
+    | "ios"
     | "android"
   )[];
   sns?: {
