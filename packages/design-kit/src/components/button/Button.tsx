@@ -14,22 +14,31 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: `bg-neutral-0 border border-neutral-20 text-neutral-70`,
-        primary: `bg-primary-100 text-neutral-0`,
+        nomal: `bg-neutral-0 border border-neutral-20 text-neutral-70 active:bg-neutral-90 disabled:text-neutral-20 hover:bg-neutral-5`,
+        primary: `bg-primary-100 text-neutral-0 active:bg-neutral-90  disabled:bg-primary-30 hover:bg-primary-80`,
+        ghost: `bg-none border-none text-neutral-70 active:bg-neutral-90 disabled:text-neutral-20 hover:bg-neutral-5`,
+        outline: "text-neutral-100 bg-none",
+        outlinePrimary:
+          "border-primary-100 text-primary-100 hover:border-primary-80",
+        outlineWhite: "bg-neutral-0 text-primary-100 border-none",
+      },
+      popupSize: {
+        small: `w-[10.35938rem] h-[2.8125rem] p-[0.46875rem]`,
+        big: `w-[16.81413rem] h-[4.54969rem] text-2xl font-semibold`,
       },
     },
     defaultVariants: {
-      variant: `default`,
+      variant: `nomal`,
     },
   },
 );
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
+  ({ className, popupSize, variant, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, className }))}
+        className={cn(buttonVariants({ variant, popupSize, className }))}
         ref={ref}
         {...props}
       />
