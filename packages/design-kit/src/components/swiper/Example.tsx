@@ -5,6 +5,7 @@ import {
   CarouselNextButton,
   CarouselPrevButton,
   type CarouselApi,
+  CarouselDotButton,
 } from "@/components/swiper/Carousel";
 import { Button } from "@/components/button/Button";
 import { useEffect, useState } from "react";
@@ -12,7 +13,7 @@ import { useEffect, useState } from "react";
 const CarouselExample = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  console.log(current);
+
   useEffect(() => {
     if (!api) {
       return;
@@ -82,6 +83,24 @@ const CarouselExample = () => {
             </Button>
           </CarouselItem>
         </CarouselContainer>
+        <div className="w-full flex justify-center mb-10">
+          <CarouselDotButton
+            index={0}
+            blue={current - 1 === 0}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={1}
+            blue={current - 1 === 1}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={2}
+            blue={current - 1 === 2}
+          ></CarouselDotButton>
+          <CarouselDotButton
+            index={3}
+            blue={current - 1 === 3}
+          ></CarouselDotButton>
+        </div>
         <CarouselPrevButton />
         <CarouselNextButton />
       </Carousel>
