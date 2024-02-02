@@ -10,12 +10,20 @@ import CarouselExampleRightSection from "./components/swiper/ExampleRightSection
 import HeroImageExample from "./components/card/heroImage/HeroImageExample";
 import MyCardExample from "./components/card/myCard/Example";
 import { Input } from "./components/input/Input";
+import { TextArea } from "./components/textArea/TextArea";
+import TabExample from "./components/tab/Example";
 
 function App() {
   return (
     <>
       <div>
-        <Input className="border-b-system-warning" />
+        <TabExample />
+      </div>
+      <div>
+        <Input variant={`small`} border={`full`} placeholder="test" />
+      </div>
+      <div>
+        <TextArea />
       </div>
       <div>
         <MyCardExample />
