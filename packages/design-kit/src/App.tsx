@@ -1,5 +1,4 @@
 import { Button } from "@/components/button/Button";
-import { Badge } from "./components/badge/Badge";
 
 import CarouselExample from "@/components/swiper/Example";
 import PaginationExample from "./components/pagination/Example";
@@ -9,9 +8,11 @@ import DataPickerExample from "./components/datepicker/Example";
 import CarouselExampleRightSection from "./components/swiper/ExampleRightSection";
 import HeroImageExample from "./components/card/heroImage/HeroImageExample";
 import MyCardExample from "./components/card/myCard/Example";
-import { Input } from "./components/input/Input";
-import { TextArea } from "./components/textArea/TextArea";
 import TabExample from "./components/tab/Example";
+import BadgeExample from "./components/badge/Example";
+import ButtonExample from "./components/button/Example";
+import TextAreaExample from "./components/textArea/Example";
+import InputExample from "./components/input/Example";
 
 function App() {
   return (
@@ -20,27 +21,22 @@ function App() {
         <TabExample />
       </div>
       <div>
-        <Input variant={`small`} border={`full`} placeholder="test" />
+        <InputExample />
       </div>
       <div>
-        <TextArea />
+        <TextAreaExample />
       </div>
       <div>
         <MyCardExample />
       </div>
 
-      <Button variant={"primary"} popupSize={"big"}>
-        버튼
-      </Button>
-      <Badge variant={"outlineGreen"}>test</Badge>
-      <Badge
-        editMode={true}
-        onClick={() => {
-          console.log("test");
-        }}
-      >
-        삭제 버튼
-      </Badge>
+      <>
+        <ButtonExample />
+      </>
+      <>
+        <BadgeExample />
+      </>
+
       <div className="w-full flex justify-center">
         <CarouselExample />
       </div>
