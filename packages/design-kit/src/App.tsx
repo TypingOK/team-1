@@ -13,10 +13,14 @@ import BadgeExample from "./components/badge/Example";
 import ButtonExample from "./components/button/Example";
 import TextAreaExample from "./components/textArea/Example";
 import InputExample from "./components/input/Example";
+import ModalExample from "./components/modal/Example";
 
 function App() {
   return (
     <>
+      <div>
+        <ModalExample />
+      </div>
       <div>
         <TabExample />
       </div>
