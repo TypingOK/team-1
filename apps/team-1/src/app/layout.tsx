@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "design-kit/dist/style.css";
 import Provider from "./Provider";
+import RecoilRootWrapper from "@/recoil/recoilRootWrapper";
 
 export const metadata: Metadata = {
   title: "스펙로그",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider>{children}</Provider>
+        <RecoilRootWrapper>
+          <Provider>{children}</Provider>
+        </RecoilRootWrapper>
       </body>
     </html>
   );
