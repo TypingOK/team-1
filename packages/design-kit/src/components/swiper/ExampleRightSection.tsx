@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/button/Button";
 import { useEffect, useState } from "react";
 
+// 사용법은 기존의 example과 동일
 const CarouselExampleRightSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -26,6 +27,7 @@ const CarouselExampleRightSection = () => {
     <>
       <Carousel
         setApi={setApi}
+        // align을 start로 해두면 시작점을 기준으로 한칸씩 움직임
         opts={{ align: `start` }}
         className="w-full max-w-[30%]"
       >

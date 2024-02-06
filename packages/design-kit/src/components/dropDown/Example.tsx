@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "./DropDown";
-
+// Dropdown은 사용되지 않습니다. 만약 여러 항목 중 하나만 선택해야하는 경우 Select를 사용하세요
 const DropDownExample = () => {
   return (
     <DropdownMenu>
