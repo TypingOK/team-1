@@ -45,6 +45,7 @@ const Layout = async ({
         <BaseProfile
           userId={currentUserData.id}
           userName={currentUserData.username}
+          userImage={currentUserData.profileImage}
           description={currentUserData.description}
           email={currentUserData.email}
           sns={currentUserData.sns}
