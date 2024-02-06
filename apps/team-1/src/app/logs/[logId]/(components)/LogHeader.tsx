@@ -25,11 +25,11 @@ const LogHeader = ({
         <p>{userName}</p>
         <p>{createdAt}</p>
         <p className="flex">
-          <img src="/icons/Log_header_like.svg" />
+          <img src="/icons/detail/Log_header_like.svg" />
           {like}
         </p>
         <p className="flex">
-          <img src="/icons/Log_header_view.svg" />
+          <img src="/icons/detail/Log_header_view.svg" />
           {view}
         </p>
       </div>

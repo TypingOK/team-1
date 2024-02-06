@@ -74,14 +74,14 @@ export interface userTypes {
   category: string[];
   sns: {
     [index: string]: string;
-  };
+  } | null;
   careers: {
     [index: string]: string;
-  };
+  } | null;
   contest: {
     [index: string]: string;
-  };
+  } | null;
   skills: {
     [index: string]: string;
-  };
+  } | null;
 }

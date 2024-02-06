@@ -6,7 +6,7 @@ interface floatingMenuItemProps {
 
 const FloatingMenuItem = ({
   label,
-  img = "/icons/Log_follow.svg",
+  img = "/icons/detail/Log_follow.svg",
   callback,
 }: floatingMenuItemProps) => {
   return (

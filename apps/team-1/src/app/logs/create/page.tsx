@@ -1,5 +1,6 @@
 "use client";
 
+import CustomEditor from "@/app/(components)/CustomEditor";
 import { ChangeEvent, useState } from "react";
 import dynamic from "next/dynamic";
 import "@uiw/react-md-editor/markdown-editor.css";
@@ -24,6 +25,8 @@ const LogsCreate = () => {
   return (
     <div>
       <MDEditor value={value} onChange={handleInputText} />
+
+      <CustomEditor />
     </div>
   );
 };

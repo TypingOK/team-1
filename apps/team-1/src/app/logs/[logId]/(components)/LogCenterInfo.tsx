@@ -14,7 +14,7 @@ const LogCenterInfo = ({ title, like, view }: logCenterInfo) => {
           <Button className="w-[200px]">
             <div className="flex flex-col items-center">
               <div className="w-[32px] h-[32px]">
-                <img src="/icons/Log_archive save.svg" />
+                <img src="/icons/detail/Log_archive save.svg" />
               </div>
               <p className="caption-2 text-neutral-40">아카이브 저장</p>
             </div>
@@ -22,7 +22,7 @@ const LogCenterInfo = ({ title, like, view }: logCenterInfo) => {
           <Button variant="primary" className="w-[200px]">
             <div className="flex flex-col items-center">
               <div className="w-[32px] h-[32px]">
-                <img src="/icons/Log_heart.svg" />
+                <img src="/icons/detail/Log_heart.svg" />
               </div>
               <p className="caption-2 text-primary-0">좋아요</p>
             </div>
@@ -33,11 +33,11 @@ const LogCenterInfo = ({ title, like, view }: logCenterInfo) => {
             <p className="caption-2 text-neutral-60 text-center">{title}</p>
             <div className="flex gap-[5px] justify-center">
               <p className="flex gap-[7px]">
-                <img src="/icons/Log_header_like.svg" />
+                <img src="/icons/detail/Log_header_like.svg" />
                 <span className="body-7 text-neutral-40">{like}</span>
               </p>
               <p className="flex gap-[7px]">
-                <img src="/icons/Log_header_view.svg" />
+                <img src="/icons/detail/Log_header_view.svg" />
                 <span className="body-7 text-neutral-40">{view}</span>
               </p>
             </div>
