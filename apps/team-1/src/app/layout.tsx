@@ -3,6 +3,8 @@ import "./globals.css";
 import "design-kit/dist/style.css";
 import Provider from "./Provider";
 import RecoilRootWrapper from "@/recoil/recoilRootWrapper";
+import HeaderWrapper from "@/components/header/HeaderWrapper";
+import FooterWrapper from "@/components/footer/FooterWrapper";
 
 export const metadata: Metadata = {
   title: "스펙로그",
@@ -18,7 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <RecoilRootWrapper>
-          <Provider>{children}</Provider>
+          <Provider>
+            <HeaderWrapper />
+            {children}
+            <FooterWrapper />
+          </Provider>
         </RecoilRootWrapper>
       </body>
     </html>

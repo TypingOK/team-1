@@ -1,3 +1,19 @@
-import { SelectTrigger, SelectItem, SelectContent } from "./Select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+} from "./Select";
 
-export { SelectTrigger, SelectItem, SelectContent };
+export {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+};

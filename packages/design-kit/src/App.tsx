@@ -1,5 +1,3 @@
-import { Button } from "@/components/button/Button";
-
 import CarouselExample from "@/components/swiper/Example";
 import PaginationExample from "./components/pagination/Example";
 // import DropDownExample from "./components/dropDown/Example";
@@ -13,10 +11,14 @@ import BadgeExample from "./components/badge/Example";
 import ButtonExample from "./components/button/Example";
 import TextAreaExample from "./components/textArea/Example";
 import InputExample from "./components/input/Example";
+import ModalExample from "./components/modal/Example";
 
 function App() {
   return (
     <>
+      <div>
+        <ModalExample />
+      </div>
       <div>
         <TabExample />
       </div>
