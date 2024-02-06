@@ -1,5 +1,6 @@
+import { API_SERVER } from "@/constants";
 import PocketBase from "pocketbase";
 
-export const pb = new PocketBase("http://54.180.1.20:8090");
+export const pb = new PocketBase(API_SERVER);
 
 pb.autoCancellation(false);

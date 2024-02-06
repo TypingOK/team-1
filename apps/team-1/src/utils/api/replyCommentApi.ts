@@ -9,6 +9,7 @@ export const handleReplyCommentsGet = async (
   await pb.collection("replyComments").getFullList({
     ...options,
     filter: `commentsId.id='${commentId}'`,
+    expand: "userId",
   });
 
 export const handleReplyCommentCreate = async (

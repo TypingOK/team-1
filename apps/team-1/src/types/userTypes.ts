@@ -4,7 +4,7 @@ export interface joinUserTypes {
   emailVisibility?: boolean;
   password: string;
   passwordConfirm: string;
-  disable?: boolean;
+  disable: boolean;
   description?: string;
   sfaclogUrl?: string;
   category?: (
@@ -73,27 +73,15 @@ export interface userTypes {
   sfaclogUrl: string;
   category: string[];
   sns: {
-    instagram?: string;
-    github?: string;
-    sfacfolio?: string;
-    rocketpunch?: string;
-    youtube?: string;
-  };
+    [index: string]: string;
+  } | null;
   careers: {
-    [index: string]: {
-      companyName: string;
-      period: string;
-      position: string;
-    };
-  };
+    [index: string]: string;
+  } | null;
   contest: {
-    [index: string]: {
-      companyName: string;
-      period: string;
-      description: string;
-    };
-  };
+    [index: string]: string;
+  } | null;
   skills: {
     [index: string]: string;
-  };
+  } | null;
 }

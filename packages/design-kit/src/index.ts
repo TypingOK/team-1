@@ -9,3 +9,6 @@ export * from "./components/indicator";
 export * from "./components/pagination";
 export * from "./components/select";
 export * from "./components/swiper";
+export * from "./components/input";
+export * from "./components/textArea";
+export * from "./components/tab";
