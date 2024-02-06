@@ -5,7 +5,7 @@ const Label = React.forwardRef<
   HTMLLabelElement,
   React.HTMLAttributes<HTMLLabelElement>
 >(({ className, ...props }, ref) => {
-  return <LabelPrimitive.Root ref={ref}></LabelPrimitive.Root>;
+  return <LabelPrimitive.Root ref={ref} {...props}></LabelPrimitive.Root>;
 });
 
 export default Label;

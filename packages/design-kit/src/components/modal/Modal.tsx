@@ -49,8 +49,13 @@ const ModalButtons = ({
   children: ReactNode;
 }) => {
   return (
-    <div {...props} className={`absolute left-0 -bottom-3 w-full flex justify-center`}>
-      {children}
+    <div className={`absolute left-0 w-full flex justify-center`}>
+      <ModalClose className="flex-1" asChild>
+        <Button className="w-full rounded-r-none rounded-tl-none">취소</Button>
+      </ModalClose>
+      <ModalClose className="flex-1" asChild={true} {...props}>
+        {children}
+      </ModalClose>
     </div>
   );
 };
