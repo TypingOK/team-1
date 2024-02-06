@@ -12,3 +12,4 @@ export * from "./components/swiper";
 export * from "./components/input";
 export * from "./components/textArea";
 export * from "./components/tab";
+export * from "./components/modal";

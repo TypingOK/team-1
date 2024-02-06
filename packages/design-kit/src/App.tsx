@@ -1,4 +1,3 @@
-
 import CarouselExample from "@/components/swiper/Example";
 import PaginationExample from "./components/pagination/Example";
 // import DropDownExample from "./components/dropDown/Example";
