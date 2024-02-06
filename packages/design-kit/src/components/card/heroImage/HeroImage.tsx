@@ -6,6 +6,10 @@ interface CardImageProps
   extends HTMLAttributes<HTMLImageElement>,
     VariantProps<typeof cardImageVariants> {}
 
+interface CardImageWrapperProps
+  extends HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardImageWrapperVariants> {}
+
 const cardImageVariants = cva(
   `object-cover  rounded-[0.625rem] w-full h-full `,
   {
@@ -21,16 +25,29 @@ const cardImageVariants = cva(
   },
 );
 
+const cardImageWrapperVariants = cva(
+  `rounded-[0.625rem] relative flex justify-center items-center`,
+  {
+    variants: {
+      size: {
+        small: `w-44 h-[5.75rem]`,
+        md: `w-[38.125rem] h-[19.375rem]`,
+        big: `w-[44.0625rem] h-[23.75rem]`,
+      },
+    },
+    defaultVariants: {
+      size: `md`,
+    },
+  },
+);
+
 const HeroImageWrapper = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { size?: `big` | `small` }
->(({ size = "small", className, children, ...props }, ref) => {
+  CardImageWrapperProps
+>(({ size, className, children, ...props }, ref) => {
   return (
     <div
-      className={cn(
-        `rounded-[0.625rem] ${size === "big" ? `w-[44.0625rem] h-[23.75rem]` : `w-[38.125rem] h-[19.375rem]`} relative flex justify-center items-center`,
-        className,
-      )}
+      className={cn(cardImageWrapperVariants({ size, className }))}
       ref={ref}
       {...props}
     >

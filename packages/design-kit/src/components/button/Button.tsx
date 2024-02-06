@@ -1,7 +1,7 @@
 import { cn } from "@/utils/index";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ButtonHTMLAttributes } from "react";
-import { Slot } from "@radix-ui/react-slot";
+// import { Slot } from "@radix-ui/react-slot";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
@@ -29,15 +29,15 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: `nomal`,
+      popupSize: `big`,
     },
   },
 );
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, popupSize, variant, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+  ({ className, popupSize, variant, ...props }, ref) => {
     return (
-      <Comp
+      <button
         className={cn(buttonVariants({ variant, popupSize, className }))}
         ref={ref}
         {...props}

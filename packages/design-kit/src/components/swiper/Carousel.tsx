@@ -185,11 +185,12 @@ const CarouselPrevButton = forwardRef<
 const CarouselDotButton = forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & { index: number; blue?: boolean }
->(({ className, children, blue = false, index, ...rest }) => {
+>(({ className, children, blue = false, index, ...rest }, ref) => {
   const { scrollTo } = useCarousel();
   return (
     <button
       className={cn(``, className)}
+      ref={ref}
       onClick={() => {
         scrollTo(index);
       }}

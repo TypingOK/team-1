@@ -4,7 +4,8 @@ import {
   HeroImageTitle,
   HeroImageWrapper,
 } from "@/components/card/heroImage/HeroImage";
-
+// 배너 느낌의 Card를 위해 별도로 제작하였습니다.
+// 배경에 사진이 있고 화면 중앙에 글자가 있는 Card입니다.
 const HeroImageExample = () => {
   return (
     <>

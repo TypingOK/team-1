@@ -25,12 +25,14 @@ const SelectExample = () => {
             if (e === "직접 입력") setDirectState(true);
           }}
         >
+          {/* 아무것도 선택하지 않은 경우 혹은 선택한 경우 Trigger쪽에 보여지게 됩니다. */}
           <SelectTrigger className="w-80">
             <SelectValue placeholder="Text" />
             <SelectIcon className="h-full flex items-center ml-auto">
               <img src="Arrow/down.svg" alt="선택 화살표" />
             </SelectIcon>
           </SelectTrigger>
+          {/* 선택해야하는 값들을 Content 안에 Group으로 묶어주면 됩니다. */}
           <SelectContent className="w-80">
             <SelectGroup>
               <SelectItem value="test">4</SelectItem>
