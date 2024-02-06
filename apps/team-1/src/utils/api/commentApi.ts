@@ -9,6 +9,7 @@ export const handleCommentGetByLogId = async (
   await pb.collection("comments").getFullList({
     ...options,
     filter: `logId.id='${logId}'`,
+    expand: "userId",
   });
 
 export const handleCommentGetByUserId = async (
