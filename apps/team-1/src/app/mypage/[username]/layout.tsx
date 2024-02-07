@@ -40,7 +40,7 @@ const Layout = async ({
   if (!currentUserData) return notFound();
 
   return (
-    <div className="grid grid-cols-[1fr_2fr]">
+    <div className="grid grid-cols-[500px,1fr] relative">
       <div>
         <BaseProfile
           userId={currentUserData.id}

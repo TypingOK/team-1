@@ -8,7 +8,7 @@ import useDeleteComments from "@/hooks/queries/useDeleteComments";
 import { useState } from "react";
 import { Button } from "design-kit";
 
-const myComments = () => {
+const MyComments = () => {
   const [isDelete, setIsDelete] = useState(false);
   const [isAllSelect, setIsAllSelect] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -100,7 +100,7 @@ const myComments = () => {
           <p>{formatDate(item.updated)}</p>
           <span>{item.expand?.logId.content}에 남긴 댓글</span>
           <button>{item.replies.length}개의 답글</button>
-          <hr />
+          <div className="border-t border-stroke-10" />
         </div>
       ))}
       <p>{selectedItems}</p>
@@ -108,4 +108,4 @@ const myComments = () => {
   );
 };
 
-export default myComments;
+export default MyComments;
