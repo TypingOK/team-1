@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeaderRight from "./HeaderRight";
+import HeaderRightAuth from "./HeaderRightAuth";
+import { getNextjsCookie } from "@/utils/cookies/serverCookie";
 
-const Header = () => {
+const fetchCookies = async () => {
+  return await getNextjsCookie();
+};
+
+const Header = async () => {
+  const cookies = await fetchCookies();
+
   return (
     <div className="w-full h-full flex items-center justify-between">
       <div className="h-full flex mr-auto">
@@ -17,7 +25,7 @@ const Header = () => {
         </nav>
       </div>
       <div className="w-[32rem] flex">
-        <HeaderRight />
+        {cookies ? <HeaderRight cookies={cookies} /> : <HeaderRightAuth />}
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
-"use client";
-import { Button } from "design-kit";
+import SwiperWrapper from "./(components)/(mainPage)/SwiperWrapper";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hello World
-      <Button>test</Button>
+    <main className="flex flex-col min-h-screen items-center justify-between p-24">
+      <SwiperWrapper />
     </main>
   );
 }
