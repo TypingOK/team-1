@@ -45,7 +45,7 @@ const parseArrayData = (data: {
   return Object.entries(data);
 };
 
-const reduceCareers = () => { };
+const reduceCareers = () => {};
 
 const BaseProfile = async ({
   userId,
@@ -75,14 +75,12 @@ const BaseProfile = async ({
             alt="이미지를 설정"
             className="w-[80px] h-[80px] rounded-full"
           />
-          <p className="text-neutral-100 body-4-bold mb-[2px]">
-            {userName}
-          </p>
+          <p className="text-neutral-100 body-4-bold mb-[2px]">{userName}</p>
           <p className="text-neutral-70 body-7">
             {description || "자기 소개를 입력해 주세요."}
           </p>
           <p className="text-neutral-30 caption-4 flex gap-[2px]">
-            <img src="/icons/mypage/link.svg"/>
+            <img src="/icons/mypage/link.svg" />
             {email}
           </p>
         </div>
@@ -93,12 +91,16 @@ const BaseProfile = async ({
         </button>
         <div className="w-[304px] min-h-[90px] bg-neutral-0 rounded-[10px] flex gap-[55px] place-items-center justify-center">
           <div className="grid place-items-center">
-            <p className="text-primary-100 body-4-bold">{followingData.length}</p>
+            <p className="text-primary-100 body-4-bold">
+              {followingData.length}
+            </p>
             <p className="text-neutral-40 body-6-bold">팔로우</p>
           </div>
           <div className="w-[1px] h-[60px] bg-stroke-10" />
           <div className="grid place-items-center">
-            <p className="text-primary-100 body-4-bold">{followerData.length}</p>
+            <p className="text-primary-100 body-4-bold">
+              {followerData.length}
+            </p>
             <p className="text-neutral-40 body-6-bold">팔로워</p>
           </div>
         </div>
@@ -110,17 +112,23 @@ const BaseProfile = async ({
               <div className="flex flex-col gap-[25px]">
                 <div className="flex gap-[15px] place-items-center justify-center">
                   <div className="grid place-items-center">
-                    <p className="text-primary-100 body-3-bold">{parsedCareers.length}</p>
+                    <p className="text-primary-100 body-3-bold">
+                      {parsedCareers.length}
+                    </p>
                     <p className="text-neutral-70 body-7">경력 연차</p>
                   </div>
                   <div className="w-[1px] h-[60px] bg-stroke-10" />
                   <div className="grid place-items-center">
-                    <p className="text-primary-100 body-3-bold">{parsedContest.length}</p>
+                    <p className="text-primary-100 body-3-bold">
+                      {parsedContest.length}
+                    </p>
                     <p className="text-neutral-70 body-7">공모전 입상</p>
                   </div>
                   <div className="w-[1px] h-[60px] bg-stroke-10" />
                   <div className="grid place-items-center">
-                    <p className="text-primary-100 body-3-bold">{parsedSkills.length}</p>
+                    <p className="text-primary-100 body-3-bold">
+                      {parsedSkills.length}
+                    </p>
                     <p className="text-neutral-70 body-7">기술 보유</p>
                   </div>
                 </div>
@@ -138,9 +146,7 @@ const BaseProfile = async ({
               </div>
             </div>
             <div>
-              <p className="text-neutral-90 body-6-bold">
-                SNS 연동
-              </p>
+              <p className="text-neutral-90 body-6-bold">SNS 연동</p>
               <div></div>
             </div>
           </div>
@@ -152,21 +158,27 @@ const BaseProfile = async ({
               <img src="/icons/mypage/Log_like.svg" />
               관심 로그
             </p>
-            <button><img src="/icons/mypage/arrowBtn.svg" /></button>
+            <button>
+              <img src="/icons/mypage/arrowBtn.svg" />
+            </button>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/Log_view.svg" />
               최근 본 로그
             </p>
-            <button><img src="/icons/mypage/arrowBtn.svg" /></button>
+            <button>
+              <img src="/icons/mypage/arrowBtn.svg" />
+            </button>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/comment.svg" />
               내가 쓴 댓글
             </p>
-            <button><img src="/icons/mypage/arrowBtn.svg" /></button>
+            <button>
+              <img src="/icons/mypage/arrowBtn.svg" />
+            </button>
           </div>
         </div>
         <div className="w-[304px] min-h-[152px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
@@ -176,14 +188,18 @@ const BaseProfile = async ({
               <img src="/icons/mypage/signout.svg" />
               로그아웃
             </p>
-            <button><img src="/icons/mypage/arrowBtn.svg" /></button>
+            <button>
+              <img src="/icons/mypage/arrowBtn.svg" />
+            </button>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/quit.svg" />
               회원탈퇴
             </p>
-            <button><img src="/icons/mypage/arrowBtn.svg" /></button>
+            <button>
+              <img src="/icons/mypage/arrowBtn.svg" />
+            </button>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import { handleLogin, handleSignup } from "@/utils/api";
 import { TabContent, TabList, TabRoot, TabTrigger } from "design-kit";
-import MyComments from '../../(components)/MyComments';
+import MyComments from "../../(components)/MyComments";
 import MyLikeLogs from "@/app/(components)/MyLikeLogs";
 import MyViewLogs from "@/app/(components)/MyViewLogs";
 
@@ -30,9 +30,15 @@ const Mypage = () => {
         <p className="body-3-bold">나의 활동</p>
         <TabRoot defaultValue="tab1">
           <TabList className="w-96 flex justify-around">
-            <TabTrigger value="tab1" className="text-sm text-neutral-90">관심 로그</TabTrigger>
-            <TabTrigger value="tab2" className="text-sm text-neutral-90">최근 본 로그</TabTrigger>
-            <TabTrigger value="tab3" className="text-sm text-neutral-90">내가 쓴 댓글</TabTrigger>
+            <TabTrigger value="tab1" className="text-sm text-neutral-90">
+              관심 로그
+            </TabTrigger>
+            <TabTrigger value="tab2" className="text-sm text-neutral-90">
+              최근 본 로그
+            </TabTrigger>
+            <TabTrigger value="tab3" className="text-sm text-neutral-90">
+              내가 쓴 댓글
+            </TabTrigger>
           </TabList>
           <TabContent value="tab1" className="w-full h-full pt-[25px]">
             <MyLikeLogs />
