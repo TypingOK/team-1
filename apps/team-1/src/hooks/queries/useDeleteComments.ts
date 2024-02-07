@@ -14,7 +14,7 @@ const useDeleteComments = (commentIds: string[]) => {
   const mutation = useMutation({
     mutationFn: () => deleteComments(commentIds),
     onSuccess: () => {
-      queryClient.invalidateQueries("comments");
+      queryClient.invalidateQueries({ queryKey: ["comments"] });
     },
   });
 

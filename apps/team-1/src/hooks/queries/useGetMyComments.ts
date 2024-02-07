@@ -1,7 +1,30 @@
-import { ExpandCommentsTypes } from "@/types";
+import {
+  ExpandCommentsTypes,
+  logsTypes,
+  replyCommentsTypes,
+  userTypes,
+} from "@/types";
 import { handleCommentGetList, handleReplyCommentsGet } from "@/utils/api";
 import { QueryKey, UseQueryOptions, useQuery } from "@tanstack/react-query";
 import { ClientResponseError, ListResult } from "pocketbase";
+
+interface filteredComments {
+  items: {
+    replies: replyCommentsTypes[];
+    expand: {
+      userId: userTypes;
+      logId: logsTypes;
+    };
+    userId: string;
+    logId: string;
+    content: string;
+    collectionId: string;
+    collectionName: string;
+    id: string;
+    created: string;
+    updated: string;
+  }[];
+}
 
 const useGetTargetComments = (
   queryKeyId: number | string,
@@ -9,9 +32,9 @@ const useGetTargetComments = (
   offset?: number,
   limit: number = 30,
   options?: UseQueryOptions<
-    ListResult<ListResult<ExpandCommentsTypes>>,
+    Promise<filteredComments>,
     ClientResponseError,
-    ListResult<ExpandCommentsTypes>,
+    filteredComments,
     QueryKey
   >,
 ) => {

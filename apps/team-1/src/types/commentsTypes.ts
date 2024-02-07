@@ -1,5 +1,5 @@
 import { RecordModel } from "pocketbase";
-import { replyCommentsTypes, userTypes } from ".";
+import { logsTypes, replyCommentsTypes, userTypes } from ".";
 
 export interface commentsTypes extends RecordModel {
   userId: string;
@@ -18,4 +18,11 @@ export interface commentsDataTypes {
   userId: string;
   logId: string;
   content: string;
+}
+
+export interface ExpandCommentsTypes extends commentsTypes {
+  expand: {
+    userId: userTypes;
+    logId: logsTypes;
+  };
 }
