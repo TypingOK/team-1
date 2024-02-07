@@ -12,8 +12,10 @@ export const handleLogGetList = async (
   offset: number = 0,
   limit: number = 30,
   options?: ListOptions,
-): Promise<ListResult<ExpandLogTypes>> =>
-  await pb.collection("logs").getList(0 * offset, 1 * limit, options);
+): Promise<ListResult<ExpandLogTypes>> => {
+  console.log(options);
+  return await pb.collection("logs").getList(offset, 1 * limit, options);
+};
 
 export const handleLogGetById = async (id: string): Promise<ExpandLogTypes> =>
   await pb.collection("logs").getOne(id, {

@@ -1,6 +1,6 @@
-import { commentsDataTypes, commentsTypes } from "@/types";
+import { ExpandCommentsTypes, commentsDataTypes, commentsTypes } from "@/types";
 import { pb } from ".";
-import { ListOptions } from "pocketbase";
+import { ListOptions, ListResult } from "pocketbase";
 
 export const handleCommentGetByLogId = async (
   logId: string,
@@ -25,7 +25,7 @@ export const handleCommentCreate = async (
   comment: commentsDataTypes,
 ): Promise<commentsTypes> => await pb.collection("comments").create(comment);
 
-export const handleCommentDelete = async (id: string) =>
+export const handleCommentDelete = async (id: string): Promise<boolean> =>
   await pb.collection("comments").delete(id);
 
 export const handleCommentUpdate = async (
@@ -33,3 +33,11 @@ export const handleCommentUpdate = async (
   updateComment: { content: string },
 ): Promise<commentsTypes> =>
   await pb.collection("comments").update(id, updateComment);
+
+export const handleCommentGetList = async (
+  offset: number = 0,
+  limit: number = 30,
+  options?: ListOptions,
+): Promise<ListResult<ExpandCommentsTypes>> => {
+  return await pb.collection("comments").getList(offset, 1 * limit, options);
+};
