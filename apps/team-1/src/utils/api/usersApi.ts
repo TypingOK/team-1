@@ -20,3 +20,6 @@ export const handleUserList = async (id: string, options?: ListOptions) =>
 
 export const handleUserUpdate = async (id: string, data: userUpdateTypes) =>
   await pb.collection("users").update(id, data);
+
+export const handleEmailVerification = async (email: string) =>
+  await pb.collection("users").requestVerification(email);
