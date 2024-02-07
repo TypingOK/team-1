@@ -32,7 +32,13 @@ const Footer = () => {
       </div>
       <div className="h-full flex flex-col justify-between">
         <FooterFamilySite />
-        <Image src="/header/icons.png" alt="아이콘들" width={135} height={35} className="ml-auto"/>
+        <Image
+          src="/header/icons.png"
+          alt="아이콘들"
+          width={135}
+          height={35}
+          className="ml-auto"
+        />
       </div>
     </div>
   );
