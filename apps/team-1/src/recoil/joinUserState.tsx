@@ -3,7 +3,7 @@ import { atom } from "recoil";
 import { joinUserTypes } from "@/types";
 
 export const joinUserState = atom<joinUserTypes>({
-  key: "signUpUserState", // 고유한 key
+  key: "joinUserState", // 고유한 key
   default: {
     username: "",
     email: "",
@@ -15,5 +15,7 @@ export const joinUserState = atom<joinUserTypes>({
     sfaclogUrl: "",
     category: [],
     sns: {},
+    suggestion: [],
+    name: "",
   }, // 초기 상태
 });

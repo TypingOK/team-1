@@ -1,4 +1,5 @@
 export interface joinUserTypes {
+  name: string;
   username: string;
   email: string;
   emailVisibility?: boolean;
@@ -24,6 +25,7 @@ export interface joinUserTypes {
     rocketpunch?: string;
     youtube?: string;
   };
+  suggestion?: ("recruit" | "opinion" | "project")[];
 }
 
 export interface userUpdateTypes {

@@ -81,6 +81,9 @@ export default {
       fontFamily: {
         sans: ["Pretendard"],
       },
+      margin: {
+        "200px" : "200px",
+      }
     },
   },
   plugins: [],
