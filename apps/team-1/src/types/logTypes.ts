@@ -3,7 +3,7 @@ import { userTypes } from ".";
 
 export interface logsTypes extends RecordModel {
   userId: string;
-  seriesId: string;
+  series: string;
   title: string;
   content: string;
   thumbnail: string;
@@ -19,12 +19,13 @@ export interface ExpandLogTypes extends logsTypes {
 
 export interface logDataTypes {
   userId: string;
-  seriesId?: string[];
+  series: string;
   title: string;
   content: string;
   private?: boolean;
   disable?: boolean;
   tags?: string;
+  thumbnail: string;
 }
 
 export interface filteredLogsTypes extends logsTypes {

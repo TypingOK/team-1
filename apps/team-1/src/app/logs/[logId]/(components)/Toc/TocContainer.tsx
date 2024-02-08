@@ -15,7 +15,7 @@ const TocContainer = () => {
   }, []);
 
   return (
-    <div className="sticky align-top hidden top-[30px] text-xs text-neutral-50 bg-primary-0 lg:inline-block text-left w-[200px] pl-[40px]">
+    <div className="sticky align-top hidden top-[100px] text-xs text-neutral-50 bg-primary-0 lg:inline-block text-left w-[200px] pl-[40px]">
       <div className="w-[160px]">
         <div className="js-toc"></div>
       </div>

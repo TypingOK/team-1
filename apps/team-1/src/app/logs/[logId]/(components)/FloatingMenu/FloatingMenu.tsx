@@ -2,7 +2,7 @@ import FloatingMenuItem from "./FloatingMenuItem";
 
 const FloatingMenu = () => {
   return (
-    <div className="sticky align-top hidden lg:inline-block top-[30px] text-left w-[200px]">
+    <div className="sticky align-top hidden lg:inline-block top-[100px] text-left w-[200px]">
       <div className="flex justify-end pr-[40px]">
         <div className="grid gap-[20px]">
           <FloatingMenuItem

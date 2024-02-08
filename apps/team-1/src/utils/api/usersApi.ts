@@ -39,3 +39,5 @@ export const handleUserUpdate = async (id: string, data: userUpdateTypes) =>
 
 export const handleEmailVerification = async (email: string) =>
   await pb.collection("users").requestVerification(email);
+
+export const handleGetUserData = () => pb.authStore.model;
