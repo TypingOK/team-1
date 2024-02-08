@@ -18,7 +18,7 @@ const Header = async () => {
           <Link href="/" className="relative h-full w-52">
             <Image src="/logo.svg" alt="로고" fill />
           </Link>
-          <Link href="/article">아티클</Link>
+          <Link href="/logs?page=1">아티클</Link>
           <Link href="/community">커뮤니티</Link>
           <Link href="/program">성장/프로그램</Link>
           <Link href="/project">협업/프로젝트</Link>
