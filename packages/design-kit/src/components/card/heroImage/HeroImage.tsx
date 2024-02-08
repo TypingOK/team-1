@@ -15,7 +15,7 @@ const cardImageVariants = cva(
   {
     variants: {
       banner: {
-        true: `brightness-50 bg-neutral-100`,
+        true: `brightness-50 bg-gradient-to-t from-neutral-100 from-10% via-neutral-0`,
         false: `bg-neutral-50`,
       },
     },

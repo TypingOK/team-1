@@ -11,7 +11,11 @@ const DropDownMenuContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.Content className={cn(``,className) } {...props} ref={ref}>
+      <DropdownMenuPrimitive.Content
+        className={cn(``, className)}
+        {...props}
+        ref={ref}
+      >
         {children}
       </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>

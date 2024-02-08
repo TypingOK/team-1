@@ -7,17 +7,16 @@ const SwiperWrapper = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["mainSwiper"],
     queryFn: async () => {
-      const result = await handleLogGetList();
+      const result = await handleLogGetList(0, 3);
       return result;
     },
   });
-  console.log(data);
   if (isLoading) {
     return <div>로딩중...</div>;
   } else if (data) {
     return (
       <>
-        <Swiper></Swiper>
+        <Swiper data={data}></Swiper>
       </>
     );
   } else {
