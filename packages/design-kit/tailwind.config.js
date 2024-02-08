@@ -83,6 +83,12 @@ export default {
       },
       margin: {
         "200px" : "200px",
+      },
+      width: {
+        '1040px': '1040px', // 사용자 지정 너비 예시
+      },
+      height: {
+        '386px' : '386px',
       }
     },
   },
