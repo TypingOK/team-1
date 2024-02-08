@@ -1,28 +1,33 @@
-import { cn } from "@/utils";
 import React from "react";
 
 const Indicator = ({
   blue = false,
-  className,
-  ...props
 }: React.ComponentProps<`img`> & { blue?: boolean }) => {
   if (blue) {
     return (
-      <img
-        className={cn(`rounded-full `, className)}
-        {...props}
-        src="indicator-blue.svg"
-        alt="indicator"
-      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        className="rounded-full"
+      >
+        <rect width="10" height="10" rx="5" fill="#0059FF" />
+      </svg>
     );
   } else {
     return (
-      <img
-        className={cn(`rounded-full`, className)}
-        {...props}
-        src="indicator-gary.svg"
-        alt="indicator"
-      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="10"
+        viewBox="0 0 10 10"
+        fill="none"
+        className="rounded-full"
+      >
+        <rect width="10" height="10" rx="5" fill="#E6E6E6" />
+      </svg>
     );
   }
 };
