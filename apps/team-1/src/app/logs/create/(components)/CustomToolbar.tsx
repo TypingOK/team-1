@@ -5,12 +5,17 @@ import { Editor } from "@tiptap/react";
 import { Button, ModalTrigger } from "design-kit";
 import { handleUploadImage } from "@/utils/api";
 import { API_SERVER } from "@/constants";
+import { createLog } from "@/recoil/createLogState";
+import { useRecoilState } from "recoil";
 
 interface ToolBarProps {
   editor: Editor | null;
+  content: string;
+  title: string;
 }
 
-function ToolBar({ editor }: ToolBarProps) {
+function ToolBar({ editor, content, title }: ToolBarProps) {
+  const [logData, setLogData] = useRecoilState(createLog);
   const selectFile = useRef<HTMLInputElement>(null);
 
   if (!editor) return null;
@@ -27,6 +32,13 @@ function ToolBar({ editor }: ToolBarProps) {
     }
 
     const res = await handleUploadImage(formData);
+    const images = [...logData.images];
+
+    images.push(
+      `${API_SERVER}/api/files/${res.collectionName}/${res.id}/${res.images}`,
+    );
+
+    setLogData({ ...logData, images });
 
     editor
       .chain()
@@ -84,6 +96,7 @@ function ToolBar({ editor }: ToolBarProps) {
           <Button
             variant={"primary"}
             className="h-[53px] w-[244px] flex gap-[10px]"
+            onClick={() => setLogData({ ...logData, content, title })}
           >
             <img src="/icons/create/publish.svg" />
             <span>발행하기</span>

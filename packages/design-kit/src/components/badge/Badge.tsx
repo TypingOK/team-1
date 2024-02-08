@@ -2,6 +2,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/utils";
+import { EditModeSVG } from "./EditModeSVG";
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-full border px-2 py-[0.13rem] text-xs font-semibold transition-colors focus:outline-none focus:ring-offset-2",
@@ -54,11 +55,9 @@ function Badge({
         {...props}
       >
         {children}
-        <img
-          className="absolute -right-1 top-0 bg-neutral-0 rounded-full"
-          src="system_icon/delete_badge.svg"
-          alt="뱃지 삭제"
-        ></img>
+        <div className="absolute -right-1 top-0 bg-neutral-0 rounded-full">
+          <EditModeSVG></EditModeSVG>
+        </div>
       </button>
     );
   } else {
