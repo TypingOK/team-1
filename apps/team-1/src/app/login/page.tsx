@@ -1,10 +1,10 @@
 "use client";
 import { loginUserTypes } from "@/types";
 import { handleLogin } from "@/utils/api";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Input } from "design-kit";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
@@ -32,7 +32,8 @@ export default function Login() {
       });
     }
     if (errorFlag === 0) {
-      router.push("/signup");
+      router.push("/");
+      router.refresh();
     }
   };
 
@@ -90,7 +91,14 @@ export default function Login() {
                     있습니다.
                   </p>
                 </div>
-                <img src="SignUp_image.svg" className="mt-14" />
+                <div className="w-52 h-52 relative">
+                  <Image
+                    fill
+                    src="/Signup_image.svg"
+                    alt="Signup image"
+                    className="mt-10"
+                  />
+                </div>
               </div>
             </div>
             <span className="grid grid-cols-2 gap-24 mt-12">
@@ -102,6 +110,7 @@ export default function Login() {
                 로그인
               </Button>
               <Button
+                type="button"
                 onClick={() => router.push("/signup")}
                 variant={"primary"}
                 className="w-48 h-10 text-base"

@@ -10,6 +10,12 @@ export async function middleware(request: NextRequest) {
   const cookie = await getNextjsCookie(requestCookie);
   const pb = new PocketBase(API_SERVER);
 
+  if (request.nextUrl.pathname.startsWith("/login")) {
+    if (request.cookies.has("pb_auth")) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
   if (cookie) {
     try {
       pb.authStore.loadFromCookie(cookie);
@@ -34,5 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
