@@ -29,7 +29,9 @@ const Community = () => {
         </div>
         <div className="text-neutral-40 text-sm mt-4">14분 전</div>
         <div className="flex w-full mt-auto">
-          <Badge variant="outlineBrand" className="mr-2">백엔드</Badge>
+          <Badge variant="outlineBrand" className="mr-2">
+            백엔드
+          </Badge>
           <Badge variant="outlineBlue">프론트엔드</Badge>
         </div>
       </div>
@@ -38,11 +40,14 @@ const Community = () => {
           Databinding 사용법
         </div>
         <div className="text-[#475467]">
-          DI, AAC, Jetpack 사용하는 안드로이드 개발자 분들과 함께 토론하는 채팅방입니다. 저희는 신입, 경력자 모두 환영합니다
+          DI, AAC, Jetpack 사용하는 안드로이드 개발자 분들과 함께 토론하는
+          채팅방입니다. 저희는 신입, 경력자 모두 환영합니다
         </div>
         <div className="text-neutral-40 text-sm mt-4">32분 전</div>
         <div className="flex w-full mt-auto">
-          <Badge variant="outlineBrand" className="mr-2">백엔드</Badge>
+          <Badge variant="outlineBrand" className="mr-2">
+            백엔드
+          </Badge>
           <Badge variant="outlineGreen">Android</Badge>
         </div>
       </div>
