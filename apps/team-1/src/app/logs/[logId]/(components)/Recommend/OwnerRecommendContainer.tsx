@@ -5,6 +5,7 @@ import {
   CarouselContainer,
   CarouselItem,
   CarouselNextButton,
+  CarouselPrevButton,
 } from "design-kit";
 import { useEffect, useState } from "react";
 import RecommendCard from "./RecommendCard";
@@ -27,6 +28,7 @@ const OwnerRecommendContainer = ({ userId }: ownerRecommendProps) => {
   return (
     ownerRecommendData.data && (
       <Carousel setApi={setApi} opts={{ align: `start`, inViewThreshold: 0.6 }}>
+        <CarouselPrevButton className="-left-[24px] z-[10]" />
         <CarouselContainer className="gap-[20px]">
           {ownerRecommendData.data.map(item => (
             <CarouselItem key={item.id} className="basis-auto">

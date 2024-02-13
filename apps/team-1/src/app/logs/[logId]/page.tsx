@@ -12,11 +12,17 @@ import { useGetComments } from "@/hooks/queries/useGetComments";
 import { useParams } from "next/navigation";
 import { API_SERVER } from "@/constants";
 import RecommendContainer from "./(components)/Recommend/RecommendContainer";
+import { useRef } from "react";
 
 const LogsDeatail = () => {
   const params = useParams<{ logId: string }>();
   const logData = useGetLogDetail(params.logId);
   const commentsData = useGetComments(params.logId);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   if (logData.isLoading || commentsData.isLoading)
     return (
@@ -38,7 +44,7 @@ const LogsDeatail = () => {
             view={logData.data.views}
           />
           <div className="pt-[100px] min-h-[700px] text-center">
-            <FloatingMenu />
+            <FloatingMenu handleScroll={handleScroll} />
             <CustomViewer content={logData.data.content} />
             <TocContainer />
           </div>
@@ -48,7 +54,7 @@ const LogsDeatail = () => {
           like={logData.data.likes}
           view={logData.data.views}
         />
-        <div className="max-w-[800px] m-auto">
+        <div ref={ref} className="max-w-[800px] m-auto">
           {commentsData.data && (
             <CommentContainer
               commentData={commentsData.data}

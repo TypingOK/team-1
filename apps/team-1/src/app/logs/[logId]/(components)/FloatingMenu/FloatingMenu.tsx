@@ -1,6 +1,13 @@
+import { handleGetUserData } from "@/utils/api";
 import FloatingMenuItem from "./FloatingMenuItem";
 
-const FloatingMenu = () => {
+interface floatingMenuProps {
+  handleScroll: () => void;
+}
+
+const FloatingMenu = ({ handleScroll }: floatingMenuProps) => {
+  const userData = handleGetUserData();
+
   return (
     <div className="sticky align-top hidden lg:inline-block top-[100px] text-left w-[200px]">
       <div className="flex justify-end pr-[40px]">
@@ -28,7 +35,7 @@ const FloatingMenu = () => {
           <FloatingMenuItem
             label="댓글"
             img="/icons/detail/Log_comment.svg"
-            callback={() => true}
+            callback={handleScroll}
           />
           <div />
           <FloatingMenuItem

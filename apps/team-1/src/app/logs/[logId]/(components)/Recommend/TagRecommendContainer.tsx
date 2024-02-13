@@ -4,6 +4,7 @@ import {
   CarouselContainer,
   CarouselItem,
   CarouselNextButton,
+  CarouselPrevButton,
 } from "design-kit";
 import { useEffect, useState } from "react";
 import RecommendCard from "./RecommendCard";
@@ -27,6 +28,7 @@ const TagRecommendContainer = ({ tagTitles }: tagRecommendContainerProps) => {
   return (
     tagRecommendData.data && (
       <Carousel setApi={setApi} opts={{ align: `start`, inViewThreshold: 0.6 }}>
+        <CarouselPrevButton className="-left-[24px] z-[10]" />
         <CarouselContainer className="gap-[20px]">
           {tagRecommendData.data.map(item => (
             <CarouselItem key={item.expand.logId.id} className="basis-auto">

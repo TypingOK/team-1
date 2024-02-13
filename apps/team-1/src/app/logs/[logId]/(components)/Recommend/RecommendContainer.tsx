@@ -27,7 +27,6 @@ const RecommendContainer = ({
           profileImage={profileImage}
           userName={username}
         />
-
         <OwnerRecommendContainer userId={userId} />
       </div>
       <div>
