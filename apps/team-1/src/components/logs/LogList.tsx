@@ -29,6 +29,7 @@ const LogList = ({ category }: { category: string }) => {
   if (typeof pageParams === "string") {
     page = parseInt(pageParams);
   }
+  console.log("페이지", page);
 
   const { data, isLoading } = useGetLogLists({
     page,
@@ -124,7 +125,43 @@ const LogList = ({ category }: { category: string }) => {
         </>
       );
     } else {
-      return <div></div>;
+      return (
+        <div className="mt-[113px] w-full justify-center flex flex-wrap mb-[100px]">
+          {data.items.map(e => (
+            <Link key={e.id} href={`/logs/${e.id}`}>
+              <MyCardWrapper border={`none`} className="h-96 flex flex-col">
+                <MyCardImageWrapper className="mb-7">
+                  <CardImage src={e.thumbnail} alt="이미지"></CardImage>
+                </MyCardImageWrapper>
+                <MyCardSeries className="h-6">{e.series}</MyCardSeries>
+                <MyCardTitle>{e.title}</MyCardTitle>
+                <MyCardDate
+                  className="w-full text-sm"
+                  date={e.created}
+                  like
+                  likeCount={e.likes}
+                  hit
+                  hitCount={e.views}
+                ></MyCardDate>
+                <div className="w-full truncate h-10">{e.content}</div>
+                <MyCardNickname className="flex w-full mt-auto">
+                  {e?.expand?.userId.profileImage && (
+                    <Image
+                      src={`https://nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com/api/files/_pb_users_auth_/${e?.expand?.userId.id}/${e?.expand?.userId.profileImage}`}
+                      alt="프로필 사진"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                  )}
+
+                  {e?.expand?.userId.username}
+                </MyCardNickname>
+              </MyCardWrapper>
+            </Link>
+          ))}
+        </div>
+      );
     }
   } else {
     return null;

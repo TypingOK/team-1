@@ -31,7 +31,7 @@ const cardImageWrapperVariants = cva(
     variants: {
       size: {
         small: `w-44 h-[5.75rem]`,
-        big: `w-[18.825rem] h-[9.875rem]`,
+        big: `w-[18.825rem] h-44`,
       },
     },
     defaultVariants: {
