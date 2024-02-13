@@ -2,8 +2,8 @@ import { Button } from "design-kit";
 
 interface logCenterInfo {
   title: string;
-  like: string;
-  view: string;
+  like: number;
+  view: number;
 }
 
 const LogCenterInfo = ({ title, like, view }: logCenterInfo) => {

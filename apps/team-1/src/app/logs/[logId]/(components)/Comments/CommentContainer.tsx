@@ -6,13 +6,14 @@ import CommentContentsContainer from "./CommentContentsContainer";
 
 interface commentContainerProps {
   commentData: commentsExpandTypes[];
+  owner: string;
 }
 
-const CommentContainer = ({ commentData }: commentContainerProps) => {
+const CommentContainer = ({ commentData, owner }: commentContainerProps) => {
   return (
     <div className="max-w-[800px] m-auto">
       <CommentInputContainer />
-      <CommentContentsContainer commentData={commentData} />
+      <CommentContentsContainer commentData={commentData} owner={owner} />
     </div>
   );
 };

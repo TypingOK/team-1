@@ -1,4 +1,4 @@
-import Markdown from "@uiw/react-md-editor";
+import MarkdownPreview from "@uiw/react-markdown-preview";
 
 interface customViewerProps {
   content: string;
@@ -6,9 +6,9 @@ interface customViewerProps {
 
 const CustomViewer = ({ content }: customViewerProps) => {
   return (
-    <div className="inline-block w-full md:w-[calc(100%-280px)] max-w-[800px] text-left">
+    <div className="inline-block w-full md:w-[calc(100%-280px)] max-w-[800px] text-left p-[15px]">
       <div className="w-full">
-        <Markdown.Markdown className="js-toc-content" source={content} />
+        <MarkdownPreview className="js-toc-content" source={content} />
       </div>
     </div>
   );

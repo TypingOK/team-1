@@ -7,33 +7,63 @@ import FloatingMenu from "./(components)/FloatingMenu/FloatingMenu";
 import LogHeader from "./(components)/LogHeader";
 import LogCenterInfo from "./(components)/LogCenterInfo";
 import CommentContainer from "./(components)/Comments/CommentContainer";
-import { detailMockData, commentMockData } from "./mockData";
+import { useGetLogDetail } from "@/hooks/queries/useGetLogDetail";
+import { useGetComments } from "@/hooks/queries/useGetComments";
+import { useParams } from "next/navigation";
+import { API_SERVER } from "@/constants";
+import RecommendContainer from "./(components)/Recommend/RecommendContainer";
 
 const LogsDeatail = () => {
-  return (
-    <>
-      <div className="max-w-[1200px] m-auto">
-        <LogHeader
-          title="Spring JDBC 성능 문제, 네트워크 분석으로 파악하기"
-          userName="화났어요"
-          profileImg="https://nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com/api/files/_pb_users_auth_/kwvngje3cdabra1/2024_01_24_17_03_31_hbJImrj1FZ.png?token="
-          createdAt="2024.01.23"
-          like="127"
-          view="524"
-        />
-        <div className="pt-[100px] min-h-[700px] text-center">
-          <FloatingMenu />
-          <CustomViewer content={detailMockData} />
-          <TocContainer />
-        </div>
+  const params = useParams<{ logId: string }>();
+  const logData = useGetLogDetail(params.logId);
+  const commentsData = useGetComments(params.logId);
+
+  if (logData.isLoading || commentsData.isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        loading...
       </div>
-      <LogCenterInfo
-        title="Spring JDBC 성능 문제, 네트워크 분석으로 파악하기"
-        like="127"
-        view="524"
-      />
-      <CommentContainer commentData={commentMockData} />
-    </>
+    );
+
+  return (
+    logData.data && (
+      <>
+        <div className="max-w-[1200px] m-auto">
+          <LogHeader
+            title={logData.data.title}
+            userName={logData.data.expand.userId.username}
+            profileImg={`${API_SERVER}/api/files/_pb_users_auth_/${logData.data.expand.userId.id}/${logData.data.expand.userId.profileImage}`}
+            createdAt={logData.data.created}
+            like={logData.data.likes}
+            view={logData.data.views}
+          />
+          <div className="pt-[100px] min-h-[700px] text-center">
+            <FloatingMenu />
+            <CustomViewer content={logData.data.content} />
+            <TocContainer />
+          </div>
+        </div>
+        <LogCenterInfo
+          title={logData.data.title}
+          like={logData.data.likes}
+          view={logData.data.views}
+        />
+        <div className="max-w-[800px] m-auto">
+          {commentsData.data && (
+            <CommentContainer
+              commentData={commentsData.data}
+              owner={logData.data.expand.userId.id}
+            />
+          )}
+        </div>
+        <RecommendContainer
+          userId={logData.data.expand.userId.id}
+          username={logData.data.expand.userId.username}
+          profileImage={logData.data.expand.userId.profileImage}
+          tagTitles={logData.data.tags}
+        />
+      </>
+    )
   );
 };
 

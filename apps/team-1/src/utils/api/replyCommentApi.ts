@@ -1,4 +1,4 @@
-import { replyCommentsTypes } from "@/types";
+import { replyCommentsDataTypes, replyCommentsTypes } from "@/types";
 import { pb } from ".";
 import { ListOptions } from "pocketbase";
 
@@ -13,7 +13,7 @@ export const handleReplyCommentsGet = async (
   });
 
 export const handleReplyCommentCreate = async (
-  replyComment: replyCommentsTypes,
+  replyComment: replyCommentsDataTypes,
 ): Promise<replyCommentsTypes> =>
   await pb.collection("replyComments").create(replyComment);
 

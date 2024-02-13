@@ -1,8 +1,8 @@
 import { commentsExpandTypes } from "@/types";
 import { handleCommentGetByLogId, handleReplyCommentsGet } from "../api";
 
-export const getComments = async () => {
-  const comments = await handleCommentGetByLogId("oadcbxc7od15zuj");
+export const getComments = async (targetId: string) => {
+  const comments = await handleCommentGetByLogId(targetId);
   const replyComments = await Promise.all(
     comments.map(comment => handleReplyCommentsGet(comment.id)),
   );
@@ -21,5 +21,9 @@ export const getComments = async () => {
     return acc;
   }, []);
 
-  return result;
+  const resultSort = result.sort(
+    (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime(),
+  );
+
+  return resultSort;
 };

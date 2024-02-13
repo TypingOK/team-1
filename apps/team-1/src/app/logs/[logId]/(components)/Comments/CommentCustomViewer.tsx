@@ -1,4 +1,5 @@
 import MarkdownPreview from "@uiw/react-markdown-preview";
+import "./style.css";
 
 interface commentCustomViewerProps {
   content: string;
