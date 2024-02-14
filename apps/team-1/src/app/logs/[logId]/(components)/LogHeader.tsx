@@ -1,4 +1,5 @@
 import { formatDate } from "@/utils/common/formatDate";
+import { useRouter } from "next/navigation";
 
 interface logHeaderProps {
   title: string;
@@ -17,6 +18,8 @@ const LogHeader = ({
   like,
   view,
 }: logHeaderProps) => {
+  const router = useRouter();
+
   return (
     <div className="max-w-[800px] m-auto">
       <div className="grid gap-[20px]">
@@ -24,8 +27,13 @@ const LogHeader = ({
           <h1 className="page-title">{title}</h1>
         </div>
         <div className="flex gap-[10px] body-7 text-neutral-40 items-center">
-          <HeaderAvatar profileImg={profileImg} />
-          <p className="body-6-bold font-semibold">{userName}</p>
+          <div
+            className="flex gap-[10px] cursor-pointer"
+            onClick={() => router.push(`/mypage/${userName}`)}
+          >
+            <HeaderAvatar profileImg={profileImg} />
+            <p className="body-6-bold font-semibold">{userName}</p>
+          </div>
           <p className="border-l h-[16px] border-[#D9D9D9]" />
           <p>{formatDate(createdAt)}</p>
           <p className="border-l h-[16px] border-[#D9D9D9]" />

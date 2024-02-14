@@ -113,7 +113,7 @@ const HeaderRight = ({ cookies }: { cookies: string }) => {
       </div>
       <div className="h-full flex items-center">
         <Link
-          href="/create"
+          href="/logs/create"
           className="w-28 flex justify-center items-center text-primary-100 h-10 text-base font-semibold p-0 border border-stroke-blue rounded-[5rem]"
         >
           새 로그 작성

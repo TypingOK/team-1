@@ -29,17 +29,19 @@ const RecommendContainer = ({
         />
         <OwnerRecommendContainer userId={userId} />
       </div>
-      <div>
-        <p className="body-3-bold">태그와 비슷한 로그 추천</p>
-        <div className="flex gap-[10px] my-[20px]">
-          {splitTags.map(item => (
-            <Badge key={item} variant={"outlinePrimary"}>
-              {item}
-            </Badge>
-          ))}
+      {tagTitles && (
+        <div>
+          <p className="body-3-bold">태그와 비슷한 로그 추천</p>
+          <div className="flex gap-[10px] my-[20px]">
+            {splitTags.map(item => (
+              <Badge key={item} variant={"outlinePrimary"}>
+                {item}
+              </Badge>
+            ))}
+          </div>
+          <TagRecommendContainer tagTitles={tagTitles} />
         </div>
-        <TagRecommendContainer tagTitles={tagTitles} />
-      </div>
+      )}
     </div>
   );
 };

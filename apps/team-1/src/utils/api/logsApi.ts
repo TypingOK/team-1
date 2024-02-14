@@ -13,7 +13,6 @@ export const handleLogGetList = async (
   limit: number = 30,
   options?: ListOptions,
 ): Promise<ListResult<ExpandLogTypes>> => {
-  console.log(options);
   return await pb.collection("logs").getList(offset, 1 * limit, options);
 };
 
