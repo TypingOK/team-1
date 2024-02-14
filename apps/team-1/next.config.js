@@ -8,7 +8,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com",
       },{
-        protocol:"https:",
+        protocol:"https",
         hostname:"cdn.discordapp.com",
       }
     ],
