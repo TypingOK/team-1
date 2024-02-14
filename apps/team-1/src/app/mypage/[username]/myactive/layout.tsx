@@ -1,4 +1,4 @@
-import MyactiveTap from "./(components)/MyactiveTap"
+import MyactiveTap from "./(components)/MyactiveTap";
 import { userTypes } from "@/types";
 import { handleUserGetByUserName } from "@/utils/api";
 import { getUserData } from "@/utils/common/getUserData";
@@ -25,7 +25,6 @@ export const generateMetadata = async ({
   };
 };
 
-
 const ActiveLayout = async ({
   children,
   params,
@@ -41,7 +40,7 @@ const ActiveLayout = async ({
   return (
     <div>
       {loginedUserData &&
-        loginedUserData.username === currentUserData.username ? (
+      loginedUserData.username === currentUserData.username ? (
         <div>
           <MyactiveTap />
           <div>{children}</div>

@@ -25,7 +25,6 @@ export const generateMetadata = async ({
   };
 };
 
-
 const AccountLayout = async ({
   children,
   params,
@@ -41,7 +40,7 @@ const AccountLayout = async ({
   return (
     <div>
       {loginedUserData &&
-        loginedUserData.username === currentUserData.username ? (
+      loginedUserData.username === currentUserData.username ? (
         <div>
           <AccountTap />
           <div>{children}</div>

@@ -42,47 +42,42 @@ const Layout = async ({
 
   return (
     <div className="relative">
-     <MypageBanner/>
+      <MypageBanner />
       <div className="flex justify-center">
         <div className="grid z-10 mt-[120px] mb-[20px]">
           <div>
             {loginedUserData &&
-              loginedUserData.username === currentUserData.username ? (
-              <AdditionalProfile 
-              userId={currentUserData.id}
-              userName={currentUserData.username}
-              userImage={currentUserData.profileImage}
-              description={currentUserData.description}
-              email={currentUserData.email}
-              sns={currentUserData.sns}
-              careers={currentUserData.careers}
-              contest={currentUserData.contest}
-              skills={currentUserData.skills}
+            loginedUserData.username === currentUserData.username ? (
+              <AdditionalProfile
+                userId={currentUserData.id}
+                userName={currentUserData.username}
+                userImage={currentUserData.profileImage}
+                description={currentUserData.description}
+                email={currentUserData.email}
+                sns={currentUserData.sns}
+                careers={currentUserData.careers}
+                contest={currentUserData.contest}
+                skills={currentUserData.skills}
               />
             ) : (
               <BaseProfile
-              userId={currentUserData.id}
-              userName={currentUserData.username}
-              userImage={currentUserData.profileImage}
-              description={currentUserData.description}
-              email={currentUserData.email}
-              sns={currentUserData.sns}
-              careers={currentUserData.careers}
-              contest={currentUserData.contest}
-              skills={currentUserData.skills}
-            />
+                userId={currentUserData.id}
+                userName={currentUserData.username}
+                userImage={currentUserData.profileImage}
+                description={currentUserData.description}
+                email={currentUserData.email}
+                sns={currentUserData.sns}
+                careers={currentUserData.careers}
+                contest={currentUserData.contest}
+                skills={currentUserData.skills}
+              />
             )}
           </div>
         </div>
         <div className="z-10 mt-[220px] w-[756px]">
-        {currentUserData.username ? (
-          <div>{children}</div>
-          ):(
-          <></>
-        )}
+          {currentUserData.username ? <div>{children}</div> : <></>}
         </div>
       </div>
-
     </div>
   );
 };

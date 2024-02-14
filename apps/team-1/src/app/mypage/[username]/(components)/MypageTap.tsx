@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { TabRoot, TabList, TabTrigger, TabContent } from 'design-kit';
-import MyLogs from './MyLogs';
-import MyArchive from './MyArchive';
+import { TabRoot, TabList, TabTrigger, TabContent } from "design-kit";
+import MyLogs from "./MyLogs";
+import MyArchive from "./MyArchive";
 
 const MypageTap = () => {
   return (
@@ -21,11 +21,11 @@ const MypageTap = () => {
           <MyLogs />
         </TabContent>
         <TabContent value="tab2" className="w-full h-full pt-[25px]">
-          <MyArchive/>
+          <MyArchive />
         </TabContent>
       </TabRoot>
     </div>
-  )
-}
+  );
+};
 
 export default MypageTap;

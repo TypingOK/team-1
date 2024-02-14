@@ -2,7 +2,7 @@ import MypageTap from "./(components)/MypageTap";
 const Mypage = () => {
   return (
     <div>
-      <MypageTap/>
+      <MypageTap />
     </div>
   );
 };

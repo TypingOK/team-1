@@ -24,7 +24,6 @@ export const generateMetadata = async ({
   };
 };
 
-
 const EditAccountLayout = async ({
   children,
   params,
@@ -40,7 +39,7 @@ const EditAccountLayout = async ({
   return (
     <div>
       {loginedUserData &&
-        loginedUserData.username === currentUserData.username ? (
+      loginedUserData.username === currentUserData.username ? (
         <div>{children}</div>
       ) : (
         <div className="flex flex-col item-center justify-center pt-[232px] gap-[18px]">

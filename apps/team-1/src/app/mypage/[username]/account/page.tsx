@@ -1,7 +1,5 @@
-const Account= () => {
-  return (
-    <div></div>
-  );
+const Account = () => {
+  return <div></div>;
 };
 
 export default Account;

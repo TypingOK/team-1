@@ -1,8 +1,5 @@
 import { handleLogDelete } from "@/utils/api";
-import {
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useDeleteMyLogs = (logIds: string[]) => {
   const queryClient = useQueryClient();

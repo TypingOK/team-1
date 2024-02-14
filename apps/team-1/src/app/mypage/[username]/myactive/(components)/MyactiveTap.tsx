@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { TabRoot, TabList, TabTrigger, TabContent } from 'design-kit';
-import MyLikesLogPage from './MyLikesLog';
-import MyViewsLogPage from './MyViewsLog';
-import MyCommentsPage from './MyComments';
+import { TabRoot, TabList, TabTrigger, TabContent } from "design-kit";
+import MyLikesLogPage from "./MyLikesLog";
+import MyViewsLogPage from "./MyViewsLog";
+import MyCommentsPage from "./MyComments";
 
 const MyactiveTap = () => {
   return (
@@ -32,7 +32,7 @@ const MyactiveTap = () => {
         </TabContent>
       </TabRoot>
     </div>
-  )
-}
+  );
+};
 
 export default MyactiveTap;

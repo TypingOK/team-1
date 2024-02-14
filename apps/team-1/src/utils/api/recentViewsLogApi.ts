@@ -25,7 +25,9 @@ export const handleViewLogGetList = async (
   limit: number = 30,
   options?: ListOptions,
 ): Promise<ListResult<ExpandRecentViewLogTypes>> => {
-  return await pb.collection("recentViewsLog").getList(offset, 1 * limit, options);
+  return await pb
+    .collection("recentViewsLog")
+    .getList(offset, 1 * limit, options);
 };
 
 export const handleRecentViewsLogUpdate = async (

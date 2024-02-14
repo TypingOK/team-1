@@ -27,7 +27,7 @@ const useGetTargetLikeLogs = (
     queryFn: () =>
       handleLikeLogGetList(offset, 1 * limit, {
         filter: `${userId !== "" ? `userId="${userId}"` : ""}`,
-        expand: "logId, logId.userId"
+        expand: "logId, logId.userId",
       }),
   });
 

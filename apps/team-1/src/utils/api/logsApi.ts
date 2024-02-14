@@ -39,4 +39,3 @@ export const handleLogUpdate = async (
 
 export const handleLogDelete = async (id: string): Promise<boolean> =>
   await pb.collection("logs").delete(id);
-

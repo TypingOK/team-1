@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { TabRoot, TabList, TabTrigger, TabContent } from 'design-kit';
-import MyFollowing from './MyFollowing';
-import MyFollower from './MyFollower';
+import { TabRoot, TabList, TabTrigger, TabContent } from "design-kit";
+import MyFollowing from "./MyFollowing";
+import MyFollower from "./MyFollower";
 
 const MypageTap = () => {
   return (
@@ -25,7 +25,7 @@ const MypageTap = () => {
         </TabContent>
       </TabRoot>
     </div>
-  )
-}
+  );
+};
 
 export default MypageTap;

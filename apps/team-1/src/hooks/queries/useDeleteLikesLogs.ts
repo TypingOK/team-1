@@ -10,7 +10,7 @@ const useDeleteLikesLogs = (userId: string, logIds: string[]) => {
 
     // Extract ids from likeLogs
     const likeLogIds = likeLogs.map(likeLog => likeLog.id);
-    console.log(likeLogIds)
+    console.log(likeLogIds);
 
     // Delete likeLogs using handleLikesLogDelete
     await Promise.all(likeLogIds.map(id => handleLikesLogDelete(id)));

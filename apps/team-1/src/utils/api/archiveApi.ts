@@ -28,11 +28,10 @@ export const handleArchiveUpdate = async (
 export const handleArchiveDelete = async (id: string): Promise<boolean> =>
   await pb.collection("archive").delete(id);
 
-  export const handleArchiveGetList = async (
-    offset: number = 0,
-    limit: number = 30,
-    options?: ListOptions,
-  ): Promise<ListResult<ExpandArchiveTypes>> => {
-    return await pb.collection("archive").getList(offset, 1 * limit, options);
-  };
-  
+export const handleArchiveGetList = async (
+  offset: number = 0,
+  limit: number = 30,
+  options?: ListOptions,
+): Promise<ListResult<ExpandArchiveTypes>> => {
+  return await pb.collection("archive").getList(offset, 1 * limit, options);
+};

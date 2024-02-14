@@ -1,4 +1,4 @@
-import MyfollowTap from "./(components)/MyfollowTap"
+import MyfollowTap from "./(components)/MyfollowTap";
 import { userTypes } from "@/types";
 import { handleUserGetByUserName } from "@/utils/api";
 import { getUserData } from "@/utils/common/getUserData";
@@ -40,7 +40,7 @@ const FollowLayout = async ({
   return (
     <div>
       {loginedUserData &&
-        loginedUserData.username === currentUserData.username ? (
+      loginedUserData.username === currentUserData.username ? (
         <div>
           <MyfollowTap />
           <div>{children}</div>

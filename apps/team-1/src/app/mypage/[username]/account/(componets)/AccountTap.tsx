@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { TabRoot, TabList, TabTrigger, TabContent } from 'design-kit';
-import DeleteAccount from './DeleteAccount';
-import Logout from './Logout';
+import { TabRoot, TabList, TabTrigger, TabContent } from "design-kit";
+import DeleteAccount from "./DeleteAccount";
+import Logout from "./Logout";
 
 const AccountTap = () => {
   return (
@@ -21,11 +21,11 @@ const AccountTap = () => {
           <Logout />
         </TabContent>
         <TabContent value="tab2" className="w-full h-full pt-[80px]">
-          <DeleteAccount/>
+          <DeleteAccount />
         </TabContent>
       </TabRoot>
     </div>
-  )
-}
+  );
+};
 
 export default AccountTap;

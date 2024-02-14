@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   handleFollowerGetByUserId,
@@ -48,7 +48,7 @@ const parseArrayData = (data: {
   return Object.entries(data);
 };
 
-const reduceCareers = () => { };
+const reduceCareers = () => {};
 
 const BaseProfile = async ({
   userId,
@@ -85,10 +85,25 @@ const BaseProfile = async ({
             {email}
           </p>
         </div>
-        <Button variant={"primary"} className="w-[304px] h-[40px] text-neutral-0 text-[14px] text-xs bg-primary-80">팔로우하기</Button>
+        <Button
+          variant={"primary"}
+          className="w-[304px] h-[40px] text-neutral-0 text-[14px] text-xs bg-primary-80"
+        >
+          팔로우하기
+        </Button>
         <div className="flex gap-[6px]">
-          <Button variant={"outlinePrimary"} className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue">메세지 보내기</Button>
-          <Button variant={"outlinePrimary"} className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue">작업 제안하기</Button>
+          <Button
+            variant={"outlinePrimary"}
+            className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue"
+          >
+            메세지 보내기
+          </Button>
+          <Button
+            variant={"outlinePrimary"}
+            className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue"
+          >
+            작업 제안하기
+          </Button>
         </div>
         <div className="w-[304px] min-h-[90px] bg-neutral-0 rounded-[10px] flex gap-[55px] place-items-center justify-center">
           <div className="grid place-items-center">
@@ -149,18 +164,18 @@ const BaseProfile = async ({
             <div className="flex flex-col gap-[20px]">
               <p className="text-neutral-90 body-6-bold">SNS 연동</p>
               <div className="flex gap-[28.5px]">
-                {parsedSns.map((item, index) => (
-                  item[1].trim() !== '' && (
-                    <div key={index}>
-                      <img
-                        src={`/icons/mypage/sns${index + 1}.svg`}
-                        alt={item[0]}
-                      />
-                    </div>
-                  )
-                ))}
+                {parsedSns.map(
+                  (item, index) =>
+                    item[1].trim() !== "" && (
+                      <div key={index}>
+                        <img
+                          src={`/icons/mypage/sns${index + 1}.svg`}
+                          alt={item[0]}
+                        />
+                      </div>
+                    ),
+                )}
               </div>
-
             </div>
           </div>
         </div>

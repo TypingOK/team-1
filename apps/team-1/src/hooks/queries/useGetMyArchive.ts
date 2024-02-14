@@ -25,7 +25,7 @@ const useGetTargetArchive = (
     ...queryConfig,
     queryKey,
     queryFn: () =>
-    handleArchiveGetList(offset, 1 * limit, {
+      handleArchiveGetList(offset, 1 * limit, {
         filter: `${userId !== "" ? `userId="${userId}"` : ""}`,
       }),
   });

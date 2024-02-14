@@ -145,18 +145,18 @@ const AdditionalProfile = async ({
             <div className="flex flex-col gap-[20px]">
               <p className="text-neutral-90 body-6-bold">SNS 연동</p>
               <div className="flex gap-[28.5px]">
-                {parsedSns.map((item, index) => (
-                  item[1].trim() !== '' && (
-                    <div key={index}>
-                      <img
-                        src={`/icons/mypage/sns${index + 1}.svg`}
-                        alt={item[0]}
-                      />
-                    </div>
-                  )
-                ))}
+                {parsedSns.map(
+                  (item, index) =>
+                    item[1].trim() !== "" && (
+                      <div key={index}>
+                        <img
+                          src={`/icons/mypage/sns${index + 1}.svg`}
+                          alt={item[0]}
+                        />
+                      </div>
+                    ),
+                )}
               </div>
-
             </div>
           </div>
         </div>

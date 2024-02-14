@@ -20,10 +20,12 @@ const FollowSearching = () => {
         onChange={handleChange}
         value={inputValue}
       />
-      {!isInputFocused && inputValue === ""  && (
+      {!isInputFocused && inputValue === "" && (
         <div className="absolute right-[39px] top-[9px] flex gap-[15px]">
           <img src="/icons/mypage/search.svg" alt="search icon" />
-          <span className="text-[16px] font-normal text-neutral-50">검색어를 입력하세요.</span>
+          <span className="text-[16px] font-normal text-neutral-50">
+            검색어를 입력하세요.
+          </span>
         </div>
       )}
     </div>
