@@ -1,7 +1,10 @@
+"use client"
+
 import {
   handleFollowerGetByUserId,
   handleFollowingGetByUserId,
 } from "@/utils/api";
+import { Button } from "design-kit";
 
 interface baseProfileProps {
   userId: string;
@@ -45,7 +48,7 @@ const parseArrayData = (data: {
   return Object.entries(data);
 };
 
-const reduceCareers = () => {};
+const reduceCareers = () => { };
 
 const BaseProfile = async ({
   userId,
@@ -64,11 +67,9 @@ const BaseProfile = async ({
   const parsedCareers = careers ? parseArrayData(careers) : [];
   const parsedContest = contest ? parseArrayData(contest) : [];
   const parsedSkills = skills ? parseData(skills) : [];
-  console.log(parsedCareers);
-
   return (
     <div>
-      <div className="w-[334px] min-h-[1107px] bg-background-blue rounded-[10px] mx-auto flex flex-col gap-[15px] py-[30px] items-center">
+      <div className="w-[334px] bg-background-blue rounded-[10px] mx-auto flex flex-col gap-[15px] py-[30px] items-center">
         <div className="grid place-items-center flex flex-col gap-[3px]">
           <img
             src={`https://nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com/api/files/_pb_users_auth_/${userId}/${userImage}`}
@@ -84,11 +85,11 @@ const BaseProfile = async ({
             {email}
           </p>
         </div>
-
-        <button className="w-[304px] h-[40px] text-neutral-0 body-7-bold bg-primary-80 rounded-[10px] flex gap-[3px] place-items-center justify-center">
-          <img src="/icons/mypage/pencil.svg" />
-          프로필 편집
-        </button>
+        <Button variant={"primary"} className="w-[304px] h-[40px] text-neutral-0 text-[14px] text-xs bg-primary-80">팔로우하기</Button>
+        <div className="flex gap-[6px]">
+          <Button variant={"outlinePrimary"} className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue">메세지 보내기</Button>
+          <Button variant={"outlinePrimary"} className="w-[149px] h-[40px] text-[14px] text-xs bg-primary-0 border border-stroke-blue">작업 제안하기</Button>
+        </div>
         <div className="w-[304px] min-h-[90px] bg-neutral-0 rounded-[10px] flex gap-[55px] place-items-center justify-center">
           <div className="grid place-items-center">
             <p className="text-primary-100 body-4-bold">
@@ -105,7 +106,7 @@ const BaseProfile = async ({
           </div>
         </div>
 
-        <div className="w-[304px] min-h-[332px] bg-neutral-0 rounded-[10px] gap-[25px] p-[20px]">
+        <div className="w-[304px] bg-neutral-0 rounded-[10px] gap-[25px] p-[20px]">
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col gap-[10px]">
               <p className="text-neutral-90 body-6-bold">경력</p>
@@ -145,61 +146,22 @@ const BaseProfile = async ({
                 <div className="border-t border-stroke-10" />
               </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-[20px]">
               <p className="text-neutral-90 body-6-bold">SNS 연동</p>
-              <div></div>
+              <div className="flex gap-[28.5px]">
+                {parsedSns.map((item, index) => (
+                  item[1].trim() !== '' && (
+                    <div key={index}>
+                      <img
+                        src={`/icons/mypage/sns${index + 1}.svg`}
+                        alt={item[0]}
+                      />
+                    </div>
+                  )
+                ))}
+              </div>
+
             </div>
-          </div>
-        </div>
-        <div className="w-[304px] h-[197px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
-          <p className="text-neutral-90 body-6-bold">나의 활동</p>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/Log_like.svg" />
-              관심 로그
-            </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/Log_view.svg" />
-              최근 본 로그
-            </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/comment.svg" />
-              내가 쓴 댓글
-            </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
-          </div>
-        </div>
-        <div className="w-[304px] min-h-[152px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
-          <p className="text-neutral-90 body-6-bold">계정</p>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/signout.svg" />
-              로그아웃
-            </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/quit.svg" />
-              회원탈퇴
-            </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
           </div>
         </div>
       </div>

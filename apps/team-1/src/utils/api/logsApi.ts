@@ -36,3 +36,7 @@ export const handleLogUpdate = async (
   id: string,
   data: logDataTypes,
 ): Promise<logsTypes> => await pb.collection("logs").update(id, data);
+
+export const handleLogDelete = async (id: string): Promise<boolean> =>
+  await pb.collection("logs").delete(id);
+

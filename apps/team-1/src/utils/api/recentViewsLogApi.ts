@@ -4,7 +4,7 @@ import {
   recentViewLogTypes,
 } from "@/types";
 import { pb } from ".";
-import { ListOptions } from "pocketbase";
+import { ListOptions, ListResult } from "pocketbase";
 
 export const handleRecentViewsLogCreate = async (
   data: recentViewLogDataTypes,
@@ -19,6 +19,14 @@ export const handleRecentViewsLogGetByUserId = async (
     ...options,
     expand: "logId,logId.userId",
   });
+
+export const handleViewLogGetList = async (
+  offset: number = 0,
+  limit: number = 30,
+  options?: ListOptions,
+): Promise<ListResult<ExpandRecentViewLogTypes>> => {
+  return await pb.collection("recentViewsLog").getList(offset, 1 * limit, options);
+};
 
 export const handleRecentViewsLogUpdate = async (
   id: string,
