@@ -1,6 +1,6 @@
 import { joinUserTypes, userTypes, userUpdateTypes } from "@/types";
 import { pb } from ".";
-import { ListOptions } from "pocketbase";
+import { AuthModel, ListOptions } from "pocketbase";
 
 export const handleSignup = (data: joinUserTypes) =>
   pb.collection("users").create({ ...data, emailVisibility: true });
@@ -40,4 +40,4 @@ export const handleUserUpdate = async (id: string, data: userUpdateTypes) =>
 export const handleEmailVerification = async (email: string) =>
   await pb.collection("users").requestVerification(email);
 
-export const handleGetUserData = () => pb.authStore.model;
+export const handleGetUserData = (): AuthModel => pb.authStore.model;

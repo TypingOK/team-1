@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // transpilePackages: ["design-kit"],
+  reactStrictMode: true,
   images: {
-    domains: [
-      "cdn.discordapp.com",
-      "search.pstatic.net",
-      "dummyimage.com",
-      "cdn.pixabay.com",
-      "images.unsplash.com",
-      "nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com",
+      },{
+        protocol:"https:,
+        hostname:"cdn.discordapp.com",
+      }
     ],
   },
 };
