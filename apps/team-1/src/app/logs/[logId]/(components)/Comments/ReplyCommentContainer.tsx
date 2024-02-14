@@ -24,7 +24,7 @@ const ReplyCommentContainer = ({
               userId={item.expand.userId.id}
               profileImage={item.expand.userId.profileImage}
               username={item.expand.userId.username}
-              createdAt={formatDate(item.expand.userId.created)}
+              createdAt={formatDate(item.created)}
               owner={owner}
             />
             <CommentCustomViewer content={item.content} />

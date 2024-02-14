@@ -1,9 +1,7 @@
 "use client";
 
 import { useGetTargetLogs } from "@/hooks/queries/useGetMyLogs";
-import { useSearchParams } from "next/navigation";
-import { pb } from "@/utils/api";
-import { userTypes } from "@/types";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import {
   Button,
   Select,
@@ -18,10 +16,11 @@ import { useState } from "react";
 import useDeleteMyLogs from "@/hooks/queries/useDeleteMyLogs";
 
 const MyLogs = () => {
-  const userData = pb.authStore.model as userTypes;
+  const { username } = useParams();
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
-  const { data } = useGetTargetLogs(page, userData?.id, page, 30);
+  const { data } = useGetTargetLogs(page, username, page, 30);
+  const router = useRouter();
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isAllSelect, setIsAllSelect] = useState<boolean>(false);
@@ -174,7 +173,11 @@ const MyLogs = () => {
       <div className="grid grid-cols-2 gap-x-[52px] gap-y-[30px]">
         {data &&
           data.items.map(item => (
-            <div key={item.id} className="flex flex-col gap-[10px]">
+            <div
+              key={item.id}
+              className="flex flex-col gap-[10px] cursor-pointer"
+              onClick={() => router.push(`/logs/${item.id}`)}
+            >
               <div className="relative">
                 <img
                   className="w-[302px] h-[158px] rounded-[10px] object-contain"
