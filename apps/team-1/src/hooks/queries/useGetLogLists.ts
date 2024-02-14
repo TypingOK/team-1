@@ -34,11 +34,13 @@ export const useGetLogLists = ({
         if (category === "latest") {
           const LogList = await handleLogGetList(0, 6, {
             sort: "-created",
+            expand: "userId",
           });
           return LogList;
         } else if (category === "popular") {
           const LogList = await handleLogGetList(0, 6, {
-            sort: "likes",
+            sort: "-likes",
+            expand: "userId",
           });
           return LogList;
         } else if (category === "follow") {
