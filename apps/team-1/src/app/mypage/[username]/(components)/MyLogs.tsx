@@ -175,14 +175,15 @@ const MyLogs = () => {
           data.items.map(item => (
             <div
               key={item.id}
-              className="flex flex-col gap-[10px] cursor-pointer"
-              onClick={() => router.push(`/logs/${item.id}`)}
+              className="flex flex-col gap-[10px] cursor-pointer relative"
+
             >
               <div className="relative">
                 <img
-                  className="w-[302px] h-[158px] rounded-[10px] object-contain"
+                  className="w-[302px] h-[158px] rounded-[10px] object-cover"
                   src={item.thumbnail}
                   alt="썸네일 없음"
+                  onClick={() => router.push(`/logs/${item.id}`)}
                 ></img>
                 {isDelete && (
                   <button
@@ -204,20 +205,22 @@ const MyLogs = () => {
                   </button>
                 )}
               </div>
-              <p className="body-7-bold text-neutral-50">
-                {item.series ? item.series : "없음"}
-              </p>
-              <p className="body-6-bold text-neutral-90">{item.title}</p>
-              <div className="flex gap-[7px]">
-                <span className="body-7 text-neutral-50">
-                  {formatDate(item.created)}
-                </span>
-                <span className="body-7 text-stroke-10">|</span>
-                <img src="/icons/mypage/heart_full.svg"></img>
-                <span className="body-7 text-neutral-50">{item.likes}</span>
-                <span className="body-7 text-stroke-10">|</span>
-                <img src="/icons/mypage/eyes_full.svg"></img>
-                <span className="body-7 text-neutral-50">{item.views}</span>
+              <div onClick={() => router.push(`/logs/${item.id}`)}>
+                <p className="body-7-bold text-neutral-50">
+                  {item.series ? item.series : "없음"}
+                </p>
+                <p className="body-6-bold text-neutral-90">{item.title}</p>
+                <div className="flex gap-[7px]">
+                  <span className="body-7 text-neutral-50">
+                    {formatDate(item.created)}
+                  </span>
+                  <span className="body-7 text-stroke-10">|</span>
+                  <img src="/icons/mypage/heart_full.svg"></img>
+                  <span className="body-7 text-neutral-50">{item.likes}</span>
+                  <span className="body-7 text-stroke-10">|</span>
+                  <img src="/icons/mypage/eyes_full.svg"></img>
+                  <span className="body-7 text-neutral-50">{item.views}</span>
+                </div>
               </div>
             </div>
           ))}

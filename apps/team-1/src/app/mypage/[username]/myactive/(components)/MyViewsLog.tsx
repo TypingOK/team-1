@@ -187,7 +187,7 @@ const MyViewsLog = () => {
               <div key={log.id} className="flex flex-col gap-[10px]">
                 <div className="relative">
                   <img
-                    className="w-[302px] h-[158px] rounded-[10px] object-contain"
+                    className="w-[302px] h-[158px] rounded-[10px] object-cover"
                     src={log.thumbnail}
                     alt="썸네일 없음"
                   />
