@@ -1,5 +1,5 @@
 import { RecordModel } from "pocketbase";
-import { logsTypes } from ".";
+import { ExpandLogTypes } from ".";
 
 export interface likeLogTypes extends RecordModel {
   userId: string;
@@ -7,5 +7,5 @@ export interface likeLogTypes extends RecordModel {
 }
 
 export interface ExpandLikesLogTypes extends likeLogTypes {
-  expand?: { logId: logsTypes[] };
+  expand?: { logId: ExpandLogTypes[] };
 }

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import BaseProfile from "./(components)/BaseProfile";
 import AdditionalProfile from "./(components)/AdditionalProfile";
+import MypageBanner from "./(components)/MypageBanner";
 
 export const fetchCache = "default-no-store";
 
@@ -40,27 +41,43 @@ const Layout = async ({
   if (!currentUserData) return notFound();
 
   return (
-    <div className="grid grid-cols-[500px,1fr] relative">
-      <div>
-        <BaseProfile
-          userId={currentUserData.id}
-          userName={currentUserData.username}
-          userImage={currentUserData.profileImage}
-          description={currentUserData.description}
-          email={currentUserData.email}
-          sns={currentUserData.sns}
-          careers={currentUserData.careers}
-          contest={currentUserData.contest}
-          skills={currentUserData.skills}
-        />
-        {loginedUserData &&
-        loginedUserData.username === currentUserData.username ? (
-          <AdditionalProfile />
-        ) : (
-          <></>
-        )}
+    <div className="relative">
+      <MypageBanner />
+      <div className="flex justify-center">
+        <div className="grid z-10 mt-[120px] mb-[20px]">
+          <div>
+            {loginedUserData &&
+            loginedUserData.username === currentUserData.username ? (
+              <AdditionalProfile
+                userId={currentUserData.id}
+                userName={currentUserData.username}
+                userImage={currentUserData.profileImage}
+                description={currentUserData.description}
+                email={currentUserData.email}
+                sns={currentUserData.sns}
+                careers={currentUserData.careers}
+                contest={currentUserData.contest}
+                skills={currentUserData.skills}
+              />
+            ) : (
+              <BaseProfile
+                userId={currentUserData.id}
+                userName={currentUserData.username}
+                userImage={currentUserData.profileImage}
+                description={currentUserData.description}
+                email={currentUserData.email}
+                sns={currentUserData.sns}
+                careers={currentUserData.careers}
+                contest={currentUserData.contest}
+                skills={currentUserData.skills}
+              />
+            )}
+          </div>
+        </div>
+        <div className="z-10 mt-[220px] w-[756px]">
+          {currentUserData.username ? <div>{children}</div> : <></>}
+        </div>
       </div>
-      <div>{children}</div>
     </div>
   );
 };

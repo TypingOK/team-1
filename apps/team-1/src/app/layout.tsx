@@ -8,7 +8,7 @@ import FooterWrapper from "@/components/footer/FooterWrapper";
 
 export const metadata: Metadata = {
   title: "스펙로그",
-  description: "개꿀잼",
+  description: "당신의 이야기가 값진 경험이 됩니다.",
 };
 
 export default function RootLayout({

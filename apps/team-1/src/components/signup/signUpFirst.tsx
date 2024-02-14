@@ -1,9 +1,11 @@
 "use client";
 import { joinUserState } from "@/recoil/joinUserState";
-import { ChangeEvent, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
 import { Button, Input } from "design-kit";
+import Image from "next/image";
+import { ChangeEvent, useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import RoundCheckbox from "./roundCheckbox";
 
 interface signUpUserTypes {
   name: string;
@@ -14,19 +16,24 @@ interface signUpUserTypes {
   term1: boolean;
 }
 
-interface SignUpFirstProps {
+interface SignUpProps {
   goToNextPage: () => void;
 }
 
-export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
+export default function SingUpFirst({ goToNextPage }: SignUpProps) {
   const [checkList, setCheckList] = useState<string[]>([]);
   const [pwMatch, setPwMatch] = useState<boolean>(false);
   const [joinUserData, setJoinUserData] = useRecoilState(joinUserState);
 
   const checkAll = (event: ChangeEvent<HTMLInputElement>) => {
-    event.target.checked
-      ? setCheckList(["term1", "term2", "term3", "term4", "term5"])
-      : setCheckList([]);
+    const isChecked = event.target.checked;
+    setValue("term1", isChecked); // term1 필드의 값을 직접 업데이트
+
+    if (isChecked) {
+      setCheckList(["term1", "term2", "term3", "term4", "term5"]);
+    } else {
+      setCheckList([]);
+    }
   };
 
   const check = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,12 +45,15 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
   };
 
   const {
+    control,
     register,
     getValues,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<signUpUserTypes>({
     defaultValues: {
+      term1: false,
       name: joinUserData.name,
       email: joinUserData.email.split("@")[0],
       domain: joinUserData.email.split("@")[1],
@@ -62,7 +72,6 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
       password: signInData.password,
       passwordConfirm: signInData.passwordConfirm,
     }));
-
     goToNextPage();
     return signInData;
   };
@@ -89,8 +98,14 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
   return (
     <div className="flex justify-center">
       <div>
-        <div className="flex flex-col justify-center items-center">
-          <img className="mt-16" src="sfaclog.svg" alt="sfaclog" />
+        <div className="flex flex-col justify-center items-center mb-3">
+          <Image
+            width={260}
+            height={42}
+            src="/logo.svg"
+            alt="logo"
+            className="mt-16"
+          />
           <div className="text-2xl font-semibold my-10">회원가입</div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -145,10 +160,10 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
                 </span>
               )}
             </div>
-
             <div>
               <p className="font-semibold mt-10 mb-1">비밀번호</p>
               <Input
+                type="password"
                 className={`rounded ${!!errors?.password?.message ? "border-system-warning" : ""} border`}
                 {...register("password", {
                   required: "비밀번호를 입력해주세요.",
@@ -174,6 +189,7 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
             <div>
               <p className="font-semibold mt-10 mb-1">비밀번호 확인</p>
               <Input
+                type="password"
                 className={`rounded ${!!errors?.passwordConfirm?.message ? (pwMatch ? "" : "border-system-warning") : ""} border`}
                 {...register("passwordConfirm", {
                   required: "비밀번호 확인을 입력해주세요.",
@@ -199,70 +215,68 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
                   </p>
                 )
               )}
-
-              <hr className="border-neutral-20 mt-10 mb-7" />
+              <hr className="border-neutral-20 mt-10 mb-4" />
               <p className="font-semibold mb-5">이용약관 동의</p>
-              <div className="flex mb-3">
-                <input
-                  className="mr-1"
-                  type="checkbox"
+              <div className="flex mb-6">
+                <RoundCheckbox
+                  value="all"
                   name="all"
                   onChange={checkAll}
                   checked={checkList.length === 5 ? true : false}
                 />
                 <div className="font-semibold">전체동의</div>
               </div>
-              <div className="flex mb-2">
-                <input
-                  type="checkbox"
-                  className="mr-1"
-                  {...register("term1", {
-                    required: "본인인증 약관에 동의해주세요.",
-                  })}
-                  onChange={check}
-                  checked={checkList.includes("term1") ? true : false}
+              <div className="flex mb-4">
+                <Controller
+                  name="term1"
+                  control={control}
+                  rules={{ required: "필수 약관에 동의해주세요." }} // 필수 필드 규칙
+                  render={({ field }) => (
+                    <RoundCheckbox
+                      value="term1"
+                      name="requiredTerm"
+                      checked={field.value}
+                      onChange={e => field.onChange(e.target.checked)}
+                    />
+                  )}
                 />
                 <div className="text-sm">본인인증 약관 전체동의 (필수)</div>
               </div>
-              <div className="flex mb-2">
-                <input
-                  className="mr-1"
-                  type="checkbox"
+              <div className="flex mb-4">
+                <RoundCheckbox
+                  value="term2"
                   name="term2"
                   onChange={check}
                   checked={checkList.includes("term2") ? true : false}
                 />
-                <div className="text-sm">개인정보 수집 이용 동의</div>
+                <div className="text-sm">개인정보 수집 이용 동의 (선택)</div>
               </div>
-              <div className="flex mb-2">
-                <input
-                  className="mr-1"
-                  type="checkbox"
+              <div className="flex mb-4">
+                <RoundCheckbox
+                  value="term3"
                   name="term3"
                   onChange={check}
                   checked={checkList.includes("term3") ? true : false}
                 />
-                <div className="text-sm">고유식별 정보처리 동의</div>
+                <div className="text-sm">고유식별 정보처리 동의 (선택)</div>
               </div>
-              <div className="flex mb-2">
-                <input
-                  className="mr-1"
-                  type="checkbox"
+              <div className="flex mb-4">
+                <RoundCheckbox
+                  value="term4"
                   name="term4"
                   onChange={check}
                   checked={checkList.includes("term4") ? true : false}
                 />
-                <div className="text-sm">통신사 이용약관 동의</div>
+                <div className="text-sm">통신사 이용약관 동의 (선택)</div>
               </div>
-              <div className="flex mb-2">
-                <input
-                  className="mr-1"
-                  type="checkbox"
+              <div className="flex mb-4">
+                <RoundCheckbox
+                  value="term5"
                   name="term5"
                   onChange={check}
                   checked={checkList.includes("term5") ? true : false}
                 />
-                <div className="text-sm">서비스 이용약관 동의</div>
+                <div className="text-sm">서비스 이용약관 동의 (선택)</div>
               </div>
               {errors.term1 && (
                 <p className="text-xs text-system-warning">
@@ -273,7 +287,7 @@ export default function SingUpFirst({ goToNextPage }: SignUpFirstProps) {
             <Button
               type="submit"
               variant={"primary"}
-              className="w-80 h-10 text-base mt-12 mb-12"
+              className="w-[355px] h-10 text-base mt-12 mb-12"
             >
               다음
             </Button>

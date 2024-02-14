@@ -1,13 +1,20 @@
 "use client";
+import RoundCheckbox from "@/components/signup/roundCheckbox";
 import { loginUserTypes } from "@/types";
 import { handleLogin } from "@/utils/api";
 import { Button, Input } from "design-kit";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
+  const [maintainLogin, setMaintainLogin] = useState<boolean>(false);
+
+  const handleCheck = () => {
+    setMaintainLogin(!maintainLogin);
+  };
 
   const {
     register,
@@ -16,7 +23,6 @@ export default function Login() {
     formState: { errors },
   } = useForm<loginUserTypes>();
   const onSubmit: SubmitHandler<loginUserTypes> = async data => {
-    console.log("submit");
     let errorFlag = 0;
     try {
       const res = await handleLogin(data.email, data.password);
@@ -50,11 +56,11 @@ export default function Login() {
                   variant={`large`}
                   border={`bottom`}
                   placeholder="아이디를 입력해주세요."
-                  className={`${!!errors?.email?.message ? "border-system-warning" : ""} `}
+                  className={`${errors?.email?.message ? "border-system-warning" : ""} `}
                   {...register("email")}
                 />
                 {errors?.email?.message && (
-                  <p className="text-system-warning">
+                  <p className="text-xs text-system-warning">
                     {errors?.email?.message}
                   </p>
                 )}
@@ -64,24 +70,27 @@ export default function Login() {
                   variant={`large`}
                   border={`bottom`}
                   placeholder="비밀번호를 입력해주세요."
-                  className={`${!!errors?.password?.message ? "border-system-warning" : ""}`}
+                  className={`${errors?.password?.message ? "border-system-warning" : ""}`}
                   {...register("password")}
                 />
                 {errors?.password?.message && (
-                  <p className="text-system-warning">
+                  <p className="text-xs text-system-warning">
                     {errors?.password?.message}
                   </p>
                 )}
-
-                <div className="mt-5">
-                  <input type="radio" />
-                  <label className="mx-2 text-sm">로그인 유지하기</label>
+                <div className="mt-5 flex">
+                  <RoundCheckbox
+                    value="maintainLogin"
+                    name="maintainLogin"
+                    onChange={handleCheck}
+                    checked={maintainLogin}
+                  />
+                  <label className="mr-2 text-sm">로그인 유지하기</label>
                   <span className="text-sm text-neutral-50">
-                    <button>아이디 찾기 | 비밀번호 찾기</button>
+                    <button type="button">아이디 찾기 | 비밀번호 찾기</button>
                   </span>
                 </div>
               </div>
-
               <div>
                 <label className="text-4xl font-bold">SIGNUP</label>
                 <div className="text-sm mt-10">
@@ -97,6 +106,7 @@ export default function Login() {
                     src="/Signup_image.svg"
                     alt="Signup image"
                     className="mt-10"
+                    priority
                   />
                 </div>
               </div>

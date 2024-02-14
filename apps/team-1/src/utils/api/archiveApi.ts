@@ -1,6 +1,6 @@
 import { ExpandArchiveTypes, archiveDataTypes, archiveTypes } from "@/types";
 import { pb } from ".";
-import { ListOptions } from "pocketbase";
+import { ListOptions, ListResult } from "pocketbase";
 
 export const handleArchiveCreate = async (
   data: archiveDataTypes,
@@ -27,3 +27,11 @@ export const handleArchiveUpdate = async (
 
 export const handleArchiveDelete = async (id: string): Promise<boolean> =>
   await pb.collection("archive").delete(id);
+
+export const handleArchiveGetList = async (
+  offset: number = 0,
+  limit: number = 30,
+  options?: ListOptions,
+): Promise<ListResult<ExpandArchiveTypes>> => {
+  return await pb.collection("archive").getList(offset, 1 * limit, options);
+};
