@@ -1,6 +1,6 @@
 import { likeLogTypes, ExpandLikesLogTypes } from "@/types";
 import { pb } from ".";
-import { ListOptions } from "pocketbase";
+import { ListOptions, ListResult } from "pocketbase";
 
 export const handleLikesLogGetByLogId = async (
   logId: string,
@@ -21,6 +21,14 @@ export const handleLikesLogGetByUserId = async (
     expand: "logId",
   });
 
+export const handleLikeLogGetList = async (
+  offset: number = 0,
+  limit: number = 30,
+  options?: ListOptions,
+): Promise<ListResult<ExpandLikesLogTypes>> => {
+  return await pb.collection("likesLog").getList(offset, 1 * limit, options);
+};
+
 export const handleLikesLogCreate = async (
   likeLog: likeLogTypes,
 ): Promise<likeLogTypes> => await pb.collection("likesLog").create(likeLog);
@@ -28,7 +36,7 @@ export const handleLikesLogCreate = async (
 export const handleLikesLogUpdate = async (
   id: string,
   data: { logId: string[] },
-): Promise<likeLogTypes> => await pb.collection("likeLog").update(id, data);
+): Promise<likeLogTypes> => await pb.collection("likesLog").update(id, data);
 
 export const handleLikesLogDelete = async (id: string) =>
-  await pb.collection("likeLog").delete(id);
+  await pb.collection("likesLog").delete(id);
