@@ -1,12 +1,12 @@
 "use client";
+import RoundCheckbox from "@/components/signup/roundCheckbox";
 import { loginUserTypes } from "@/types";
 import { handleLogin } from "@/utils/api";
 import { Button, Input } from "design-kit";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { SubmitHandler, useForm } from "react-hook-form";
-import RoundCheckbox from "@/components/signup/roundCheckbox";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
@@ -20,7 +20,6 @@ export default function Login() {
     register,
     handleSubmit,
     setError,
-    getValues,
     formState: { errors },
   } = useForm<loginUserTypes>();
   const onSubmit: SubmitHandler<loginUserTypes> = async data => {
@@ -57,11 +56,11 @@ export default function Login() {
                   variant={`large`}
                   border={`bottom`}
                   placeholder="아이디를 입력해주세요."
-                  className={`${!!errors?.email?.message ? "border-system-warning" : ""} `}
+                  className={`${errors?.email?.message ? "border-system-warning" : ""} `}
                   {...register("email")}
                 />
                 {errors?.email?.message && (
-                  <p className="text-system-warning">
+                  <p className="text-xs text-system-warning">
                     {errors?.email?.message}
                   </p>
                 )}
@@ -71,11 +70,11 @@ export default function Login() {
                   variant={`large`}
                   border={`bottom`}
                   placeholder="비밀번호를 입력해주세요."
-                  className={`${!!errors?.password?.message ? "border-system-warning" : ""}`}
+                  className={`${errors?.password?.message ? "border-system-warning" : ""}`}
                   {...register("password")}
                 />
                 {errors?.password?.message && (
-                  <p className="text-system-warning">
+                  <p className="text-xs text-system-warning">
                     {errors?.password?.message}
                   </p>
                 )}
@@ -88,7 +87,7 @@ export default function Login() {
                   />
                   <label className="mr-2 text-sm">로그인 유지하기</label>
                   <span className="text-sm text-neutral-50">
-                    <button>아이디 찾기 | 비밀번호 찾기</button>
+                    <button type="button">아이디 찾기 | 비밀번호 찾기</button>
                   </span>
                 </div>
               </div>
