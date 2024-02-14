@@ -6,8 +6,6 @@ import {
   Carousel,
   CarouselContainer,
   CarouselItem,
-  CarouselNextButton,
-  CarouselPrevButton,
   CarouselDotButton,
   CardImage,
   HeroImageBadge,
@@ -30,7 +28,6 @@ const Swiper = ({ data }: { data: ListResult<ExpandLogTypes> }) => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-  console.log(current);
   return (
     <>
       <Carousel

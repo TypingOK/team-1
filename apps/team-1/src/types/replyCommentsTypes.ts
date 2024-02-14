@@ -8,3 +8,10 @@ export interface replyCommentsTypes extends RecordModel {
   logId: string;
   expand: { userId: userTypes };
 }
+
+export interface replyCommentsDataTypes {
+  content: string;
+  commentsId: string;
+  userId: string;
+  logId: string;
+}

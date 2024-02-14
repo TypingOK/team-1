@@ -11,10 +11,11 @@ export interface logsTypes extends RecordModel {
   likes: number;
   views: number;
   disable: boolean;
+  tags: string;
 }
 
 export interface ExpandLogTypes extends logsTypes {
-  expand?: { userId: userTypes };
+  expand: { userId: userTypes };
 }
 
 export interface logDataTypes {

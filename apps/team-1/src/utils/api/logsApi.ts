@@ -32,6 +32,16 @@ export const handleLogGetBySeriesId = async (
     expand: "userId",
   });
 
+export const handleLogGetByUserId = async (
+  id: string,
+  options?: ListOptions,
+): Promise<ExpandLogTypes[]> =>
+  await pb.collection("logs").getFullList({
+    ...options,
+    filter: `userId='${id}'`,
+    expand: "userId",
+  });
+
 export const handleLogUpdate = async (
   id: string,
   data: logDataTypes,

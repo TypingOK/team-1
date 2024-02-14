@@ -5,12 +5,14 @@ import CommentProfileCard from "./CommentProfileCard";
 import CommentCustomViewer from "./CommentCustomViewer";
 import { useState } from "react";
 import ReplyCommentContainer from "./ReplyCommentContainer";
+import { formatDate } from "@/utils/common/formatDate";
 
 interface commentItemProps {
   commentData: commentsExpandTypes;
+  owner: string;
 }
 
-const CommentItem = ({ commentData }: commentItemProps) => {
+const CommentItem = ({ commentData, owner }: commentItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handelReplyCommentToggle = () => setIsOpen(prev => !prev);
@@ -22,7 +24,8 @@ const CommentItem = ({ commentData }: commentItemProps) => {
           userId={commentData.expand.userId.id}
           profileImage={commentData.expand.userId.profileImage}
           username={commentData.expand.userId.username}
-          createdAt={commentData.expand.userId.created}
+          createdAt={formatDate(commentData.created)}
+          owner={owner}
         />
         <CommentCustomViewer content={commentData.content} />
       </div>
@@ -54,7 +57,11 @@ const CommentItem = ({ commentData }: commentItemProps) => {
         )}
       </div>
       {isOpen && (
-        <ReplyCommentContainer replyComments={commentData.replyComments} />
+        <ReplyCommentContainer
+          replyComments={commentData.replyComments}
+          owner={owner}
+          commentsId={commentData.id}
+        />
       )}
     </div>
   );

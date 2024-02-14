@@ -1,8 +1,11 @@
+import { Badge } from "design-kit";
+
 interface commentAvatarProps {
   userId: string;
   profileImage: string;
   username: string;
   createdAt: string;
+  owner: string;
 }
 
 const CommentProfileCard = ({
@@ -10,6 +13,7 @@ const CommentProfileCard = ({
   profileImage,
   username,
   createdAt,
+  owner,
 }: commentAvatarProps) => {
   return (
     <div className="flex gap-[10px] mb-[25px]">
@@ -20,7 +24,14 @@ const CommentProfileCard = ({
         />
       </div>
       <div>
-        <p className="body-4-bold">{username}</p>
+        <div className="flex items-center gap-[10px]">
+          <p className="body-4-bold">{username}</p>
+          {userId === owner && (
+            <Badge variant={"outlinePrimary"} className="w-[50px] h-[20px]">
+              작성자
+            </Badge>
+          )}
+        </div>
         <p className="body-7 text-neutral-40">{createdAt}</p>
       </div>
     </div>
