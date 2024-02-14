@@ -1,8 +1,7 @@
 "use client";
 
 import { useGetTargetArchive } from "@/hooks/queries/useGetMyArchive";
-import { useSearchParams } from "next/navigation";
-import { pb } from "@/utils/api";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { userTypes } from "@/types";
 import {
   Button,
@@ -18,10 +17,11 @@ import { useState } from "react";
 import useDeleteMyAchive from "@/hooks/queries/useDeleteMyArchive";
 
 const MyArchive = () => {
-  const userData = pb.authStore.model as userTypes;
+  const { username } = useParams();
   const searchParams = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
-  const { data } = useGetTargetArchive(page, userData?.id, page, 30);
+  const { data } = useGetTargetArchive(page, username, page, 30);
+  const router = useRouter();
 
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isAllSelect, setIsAllSelect] = useState<boolean>(false);

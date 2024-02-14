@@ -2,6 +2,7 @@ import {
   handleFollowerGetByUserId,
   handleFollowingGetByUserId,
 } from "@/utils/api";
+import Link from 'next/link';
 
 interface baseProfileProps {
   userId: string;
@@ -91,14 +92,18 @@ const AdditionalProfile = async ({
             <p className="text-primary-100 body-4-bold">
               {followingData.length}
             </p>
-            <p className="text-neutral-40 body-6-bold">팔로우</p>
+            <Link href={`/mypage/${userName}/myfollow`}>
+              <p className="text-neutral-40 body-6-bold">팔로우</p>
+            </Link>
           </div>
           <div className="w-[1px] h-[60px] bg-stroke-10" />
           <div className="grid place-items-center">
             <p className="text-primary-100 body-4-bold">
               {followerData.length}
             </p>
-            <p className="text-neutral-40 body-6-bold">팔로워</p>
+            <Link href={`/mypage/${userName}/myfollow`}>
+              <p className="text-neutral-40 body-6-bold">팔로워</p>
+            </Link>
           </div>
         </div>
 
@@ -167,27 +172,33 @@ const AdditionalProfile = async ({
               <img src="/icons/mypage/Log_like.svg" />
               관심 로그
             </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
+            <Link href={`/mypage/${userName}/myactive`}>
+              <button>
+                <img src="/icons/mypage/arrowBtn.svg" />
+              </button>
+            </Link>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/Log_view.svg" />
               최근 본 로그
             </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
+            <Link href={`/mypage/${userName}/myactive`}>
+              <button>
+                <img src="/icons/mypage/arrowBtn.svg" />
+              </button>
+            </Link>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/comment.svg" />
               내가 쓴 댓글
             </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
+            <Link href={`/mypage/${userName}/myactive`}>
+              <button>
+                <img src="/icons/mypage/arrowBtn.svg" />
+              </button>
+            </Link>
           </div>
         </div>
         <div className="w-[304px] min-h-[152px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
@@ -197,18 +208,22 @@ const AdditionalProfile = async ({
               <img src="/icons/mypage/signout.svg" />
               로그아웃
             </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
+            <Link href={`/mypage/${userName}/account`}>
+              <button>
+                <img src="/icons/mypage/arrowBtn.svg" />
+              </button>
+            </Link>
           </div>
           <div className="h-[28px] flex justify-between">
             <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
               <img src="/icons/mypage/quit.svg" />
               회원탈퇴
             </p>
-            <button>
-              <img src="/icons/mypage/arrowBtn.svg" />
-            </button>
+            <Link href={`/mypage/${userName}/account`}>
+              <button>
+                <img src="/icons/mypage/arrowBtn.svg" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
