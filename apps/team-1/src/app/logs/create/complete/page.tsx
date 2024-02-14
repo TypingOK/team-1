@@ -2,10 +2,12 @@
 
 import { Button } from "design-kit";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const Complete = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const logId = searchParams.get("logId");
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -22,7 +24,7 @@ const Complete = () => {
           <Button
             variant={"primary"}
             className="w-[108px] h-[40px] text-base font-semibold"
-            onClick={() => router.replace("/")}
+            onClick={() => router.replace(`/logs/${logId}`)}
           >
             확인
           </Button>
