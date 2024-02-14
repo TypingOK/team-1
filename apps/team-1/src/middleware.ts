@@ -16,6 +16,12 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  if (request.nextUrl.pathname.startsWith("/logs/create")) {
+    if (!request.cookies.has("pb_auth")) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+  }
+
   if (cookie) {
     try {
       pb.authStore.loadFromCookie(cookie);
