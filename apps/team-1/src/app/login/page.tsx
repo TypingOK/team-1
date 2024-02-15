@@ -16,6 +16,10 @@ export default function Login() {
     setMaintainLogin(!maintainLogin);
   };
 
+  function goChangePassword() {
+    router.push("/changePassword");
+  }
+
   const {
     register,
     handleSubmit,
@@ -86,8 +90,12 @@ export default function Login() {
                     checked={maintainLogin}
                   />
                   <label className="mr-2 text-sm">로그인 유지하기</label>
-                  <span className="text-sm text-neutral-50">
-                    <button type="button">아이디 찾기 | 비밀번호 찾기</button>
+                  <span className="inline text-sm text-neutral-50">
+                    <button type="button">아이디 찾기</button>
+                    <span> | </span>
+                    <button type="button" onClick={goChangePassword}>
+                      비밀번호 찾기
+                    </button>
                   </span>
                 </div>
               </div>

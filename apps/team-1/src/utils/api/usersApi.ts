@@ -41,3 +41,6 @@ export const handleEmailVerification = async (email: string) =>
   await pb.collection("users").requestVerification(email);
 
 export const handleGetUserData = (): AuthModel => pb.authStore.model;
+
+export const handlePasswordChange = async (email: string) =>
+  await pb.collection("users").requestPasswordReset(email);
