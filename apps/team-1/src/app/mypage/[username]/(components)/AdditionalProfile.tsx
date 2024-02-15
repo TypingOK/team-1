@@ -2,7 +2,7 @@ import {
   handleFollowerGetByUserId,
   handleFollowingGetByUserId,
 } from "@/utils/api";
-import Link from 'next/link';
+import Link from "next/link";
 
 interface baseProfileProps {
   userId: string;
@@ -67,7 +67,7 @@ const AdditionalProfile = async ({
   return (
     <div>
       <div className="w-[334px] bg-background-blue rounded-[10px] mx-auto flex flex-col gap-[15px] py-[30px] items-center">
-        <div className="grid place-items-center flex flex-col gap-[3px]">
+        <div className="place-items-center flex flex-col gap-[3px]">
           <img
             src={`https://nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com/api/files/_pb_users_auth_/${userId}/${userImage}`}
             alt="이미지를 설정"
@@ -88,23 +88,23 @@ const AdditionalProfile = async ({
           프로필 편집
         </button>
         <div className="w-[304px] min-h-[90px] bg-neutral-0 rounded-[10px] flex gap-[55px] place-items-center justify-center">
-          <div className="grid place-items-center">
-            <p className="text-primary-100 body-4-bold">
-              {followingData.length}
-            </p>
-            <Link href={`/mypage/${userName}/myfollow`}>
+          <Link href={`/mypage/${userName}/myfollow?target=following`}>
+            <div className="grid place-items-center">
+              <p className="text-primary-100 body-4-bold">
+                {followingData.length}
+              </p>
               <p className="text-neutral-40 body-6-bold">팔로우</p>
-            </Link>
-          </div>
+            </div>
+          </Link>
           <div className="w-[1px] h-[60px] bg-stroke-10" />
-          <div className="grid place-items-center">
-            <p className="text-primary-100 body-4-bold">
-              {followerData.length}
-            </p>
-            <Link href={`/mypage/${userName}/myfollow`}>
+          <Link href={`/mypage/${userName}/myfollow?target=follower`}>
+            <div className="grid place-items-center">
+              <p className="text-primary-100 body-4-bold">
+                {followerData.length}
+              </p>
               <p className="text-neutral-40 body-6-bold">팔로워</p>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
 
         <div className="w-[304px] bg-neutral-0 rounded-[10px] gap-[25px] p-[20px]">
@@ -167,64 +167,64 @@ const AdditionalProfile = async ({
         </div>
         <div className="w-[304px] h-[197px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
           <p className="text-neutral-90 body-6-bold">나의 활동</p>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/Log_like.svg" />
-              관심 로그
-            </p>
-            <Link href={`/mypage/${userName}/myactive`}>
+          <Link href={`/mypage/${userName}/myactive?target=interest`}>
+            <div className="h-[28px] flex justify-between">
+              <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
+                <img src="/icons/mypage/Log_like.svg" />
+                관심 로그
+              </p>
               <button>
                 <img src="/icons/mypage/arrowBtn.svg" />
               </button>
-            </Link>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/Log_view.svg" />
-              최근 본 로그
-            </p>
-            <Link href={`/mypage/${userName}/myactive`}>
+            </div>
+          </Link>
+          <Link href={`/mypage/${userName}/myactive?target=recent`}>
+            <div className="h-[28px] flex justify-between">
+              <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
+                <img src="/icons/mypage/Log_view.svg" />
+                최근 본 로그
+              </p>
               <button>
                 <img src="/icons/mypage/arrowBtn.svg" />
               </button>
-            </Link>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/comment.svg" />
-              내가 쓴 댓글
-            </p>
-            <Link href={`/mypage/${userName}/myactive`}>
+            </div>
+          </Link>
+          <Link href={`/mypage/${userName}/myactive?target=comment`}>
+            <div className="h-[28px] flex justify-between">
+              <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
+                <img src="/icons/mypage/comment.svg" />
+                내가 쓴 댓글
+              </p>
               <button>
                 <img src="/icons/mypage/arrowBtn.svg" />
               </button>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <div className="w-[304px] min-h-[152px] bg-neutral-0 rounded-[10px] p-[20px] flex flex-col gap-[15px]">
           <p className="text-neutral-90 body-6-bold">계정</p>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/signout.svg" />
-              로그아웃
-            </p>
-            <Link href={`/mypage/${userName}/account`}>
+          <Link href={`/mypage/${userName}/account?target=logout`}>
+            <div className="h-[28px] flex justify-between">
+              <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
+                <img src="/icons/mypage/signout.svg" />
+                로그아웃
+              </p>
               <button>
                 <img src="/icons/mypage/arrowBtn.svg" />
               </button>
-            </Link>
-          </div>
-          <div className="h-[28px] flex justify-between">
-            <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
-              <img src="/icons/mypage/quit.svg" />
-              회원탈퇴
-            </p>
-            <Link href={`/mypage/${userName}/account`}>
+            </div>
+          </Link>
+          <Link href={`/mypage/${userName}/account?target=signout`}>
+            <div className="h-[28px] flex justify-between">
+              <p className="text-neutral-70 body-7 flex gap-[5px] items-center">
+                <img src="/icons/mypage/quit.svg" />
+                회원탈퇴
+              </p>
               <button>
                 <img src="/icons/mypage/arrowBtn.svg" />
               </button>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -70,7 +70,7 @@ const BaseProfile = async ({
   return (
     <div>
       <div className="w-[334px] bg-background-blue rounded-[10px] mx-auto flex flex-col gap-[15px] py-[30px] items-center">
-        <div className="grid place-items-center flex flex-col gap-[3px]">
+        <div className="place-items-center flex flex-col gap-[3px]">
           <img
             src={`https://nf01uyzvha.execute-api.ap-northeast-2.amazonaws.com/api/files/_pb_users_auth_/${userId}/${userImage}`}
             alt="이미지를 설정"

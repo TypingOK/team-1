@@ -42,7 +42,6 @@ const ActiveLayout = async ({
       {loginedUserData &&
       loginedUserData.username === currentUserData.username ? (
         <div>
-          <MyactiveTap />
           <div>{children}</div>
         </div>
       ) : (

@@ -42,7 +42,6 @@ const AccountLayout = async ({
       {loginedUserData &&
       loginedUserData.username === currentUserData.username ? (
         <div>
-          <AccountTap />
           <div>{children}</div>
         </div>
       ) : (

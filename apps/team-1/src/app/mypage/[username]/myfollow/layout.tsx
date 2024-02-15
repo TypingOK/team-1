@@ -1,29 +1,8 @@
-import MyfollowTap from "./(components)/MyfollowTap";
-import { userTypes } from "@/types";
 import { handleUserGetByUserName } from "@/utils/api";
 import { getUserData } from "@/utils/common/getUserData";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 
 export const fetchCache = "default-no-store";
-
-interface generateMetadataProps {
-  params: { username: string };
-}
-
-export const generateMetadata = async ({
-  params,
-}: generateMetadataProps): Promise<Metadata> => {
-  const { username } = params;
-  const currentUserData = (await handleUserGetByUserName(
-    username,
-  )) as userTypes;
-
-  return {
-    title: `${currentUserData.username}의 스팩로그`,
-    description: `${currentUserData.description}`,
-  };
-};
 
 const FollowLayout = async ({
   children,
@@ -42,7 +21,6 @@ const FollowLayout = async ({
       {loginedUserData &&
       loginedUserData.username === currentUserData.username ? (
         <div>
-          <MyfollowTap />
           <div>{children}</div>
         </div>
       ) : (

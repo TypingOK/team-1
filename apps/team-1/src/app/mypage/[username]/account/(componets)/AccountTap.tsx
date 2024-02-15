@@ -3,24 +3,30 @@
 import { TabRoot, TabList, TabTrigger, TabContent } from "design-kit";
 import DeleteAccount from "./DeleteAccount";
 import Logout from "./Logout";
+import { mypageProps } from "../../page";
+import Link from "next/link";
 
-const AccountTap = () => {
+const AccountTap = ({ params, searchParams }: mypageProps) => {
   return (
     <div className="flex flex-col gap-[20px] p-[50px]">
       <p className="body-3-bold">계정</p>
-      <TabRoot defaultValue="tab1">
+      <TabRoot defaultValue={searchParams ? searchParams.target : "logout"}>
         <TabList className="w-[250px] flex justify-around">
-          <TabTrigger value="tab1" className="text-sm text-neutral-90">
-            로그아웃
-          </TabTrigger>
-          <TabTrigger value="tab2" className="text-sm text-neutral-90">
-            회원탈퇴
-          </TabTrigger>
+          <Link href={"/mypage/i_am_angry/account?target=logout"}>
+            <TabTrigger value="logout" className="text-sm text-neutral-90">
+              로그아웃
+            </TabTrigger>
+          </Link>
+          <Link href={"/mypage/i_am_angry/account?target=signout"}>
+            <TabTrigger value="signout" className="text-sm text-neutral-90">
+              회원탈퇴
+            </TabTrigger>
+          </Link>
         </TabList>
-        <TabContent value="tab1" className="w-full h-full pt-[80px]">
+        <TabContent value="logout" className="w-full h-full pt-[80px]">
           <Logout />
         </TabContent>
-        <TabContent value="tab2" className="w-full h-full pt-[80px]">
+        <TabContent value="signout" className="w-full h-full pt-[80px]">
           <DeleteAccount />
         </TabContent>
       </TabRoot>

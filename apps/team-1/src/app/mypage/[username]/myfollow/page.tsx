@@ -1,4 +1,6 @@
+import MypageTap from "./(components)/MyfollowTap";
+
 const myfollow = () => {
-  return <div></div>;
+  return <MypageTap />;
 };
 export default myfollow;
