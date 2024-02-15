@@ -1,3 +1,4 @@
+import { formatDate } from "@/utils/common/formatDate";
 import {
   CardImage,
   MyCardDate,
@@ -23,12 +24,12 @@ const RecommendCard = ({
   thumbnail,
   series,
   title,
+  createdAt,
   like,
   hit,
 }: recommendCardProps) => {
   const router = useRouter();
   const handleLogClick = () => router.push(`/logs/${logId}`);
-
   return (
     <MyCardWrapper
       className="p-0 w-auto h-auto cursor-pointer"
@@ -43,7 +44,7 @@ const RecommendCard = ({
         <MyCardTitle>{title}</MyCardTitle>
         <MyCardDate
           className="w-full text-xs"
-          date={"2024.01.31"}
+          date={createdAt}
           like
           likeCount={like}
           hit={true}
