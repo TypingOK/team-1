@@ -11,7 +11,7 @@ const MyactiveTap = ({ params, searchParams }: mypageProps) => {
   return (
     <div className="flex flex-col gap-[20px] p-[50px]">
       <p className="body-3-bold">나의 활동</p>
-      <TabRoot defaultValue={searchParams ? searchParams.target : "interest"}>
+      <TabRoot value={searchParams ? searchParams.target : "interest"}>
         <TabList className="w-[380px] flex justify-around">
           <Link href={"/mypage/i_am_angry/myactive?target=interest"}>
             <TabTrigger value="interest" className="text-sm text-neutral-90">

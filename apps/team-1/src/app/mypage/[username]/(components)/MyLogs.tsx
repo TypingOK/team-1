@@ -176,7 +176,6 @@ const MyLogs = () => {
             <div
               key={item.id}
               className="flex flex-col gap-[10px] cursor-pointer relative"
-
             >
               <div className="relative">
                 <img
