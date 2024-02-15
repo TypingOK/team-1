@@ -10,14 +10,14 @@ const AccountTap = ({ params, searchParams }: mypageProps) => {
   return (
     <div className="flex flex-col gap-[20px] p-[50px]">
       <p className="body-3-bold">계정</p>
-      <TabRoot value={searchParams ? searchParams.target : "logout"}>
+      <TabRoot value={searchParams?.target ? searchParams.target : "logout"}>
         <TabList className="w-[250px] flex justify-around">
-          <Link href={"/mypage/i_am_angry/account?target=logout"}>
+          <Link href={`/mypage/${params.username}/account?target=logout`}>
             <TabTrigger value="logout" className="text-sm text-neutral-90">
               로그아웃
             </TabTrigger>
           </Link>
-          <Link href={"/mypage/i_am_angry/account?target=signout"}>
+          <Link href={`/mypage/${params.username}/account?target=signout`}>
             <TabTrigger value="signout" className="text-sm text-neutral-90">
               회원탈퇴
             </TabTrigger>

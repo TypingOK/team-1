@@ -1,7 +1,7 @@
 import MypageTap from "./(components)/MypageTap";
 
 export interface mypageProps {
-  params: { pageName: string };
+  params: { username: string };
   searchParams?: { [key: string]: string };
 }
 

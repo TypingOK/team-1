@@ -82,11 +82,12 @@ const AdditionalProfile = async ({
             {email}
           </p>
         </div>
-
-        <button className="w-[304px] h-[40px] text-neutral-0 body-7-bold bg-primary-80 rounded-[10px] flex gap-[3px] place-items-center justify-center">
-          <img src="/icons/mypage/pencil.svg" />
-          프로필 편집
-        </button>
+        <Link href={`/mypage/${userName}/editaccount`}>
+          <button className="w-[304px] h-[40px] text-neutral-0 body-7-bold bg-primary-80 rounded-[10px] flex gap-[3px] place-items-center justify-center">
+            <img src="/icons/mypage/pencil.svg" />
+            프로필 편집
+          </button>
+        </Link>
         <div className="w-[304px] min-h-[90px] bg-neutral-0 rounded-[10px] flex gap-[55px] place-items-center justify-center">
           <Link href={`/mypage/${userName}/myfollow?target=following`}>
             <div className="grid place-items-center">

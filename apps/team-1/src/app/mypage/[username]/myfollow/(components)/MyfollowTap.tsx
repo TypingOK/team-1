@@ -10,14 +10,14 @@ const MypageTap = ({ params, searchParams }: mypageProps) => {
   return (
     <div className="flex flex-col gap-[20px] p-[50px]">
       <p className="body-3-bold">마이페이지</p>
-      <TabRoot value={searchParams ? searchParams.target : "following"}>
+      <TabRoot value={searchParams?.target ? searchParams.target : "following"}>
         <TabList className="w-[250px] flex justify-around">
-          <Link href={"/mypage/i_am_angry/myfollow?target=following"}>
+          <Link href={`/mypage/${params.username}?target=following`}>
             <TabTrigger value="following" className="text-sm text-neutral-90">
               팔로잉
             </TabTrigger>
           </Link>
-          <Link href={"/mypage/i_am_angry/myfollow?target=follower"}>
+          <Link href={`/mypage/${params.username}?target=follower`}>
             <TabTrigger value="follower" className="text-sm text-neutral-90">
               팔로워
             </TabTrigger>
