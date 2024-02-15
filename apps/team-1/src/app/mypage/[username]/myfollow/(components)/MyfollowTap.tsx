@@ -12,12 +12,12 @@ const MypageTap = ({ params, searchParams }: mypageProps) => {
       <p className="body-3-bold">마이페이지</p>
       <TabRoot value={searchParams?.target ? searchParams.target : "following"}>
         <TabList className="w-[250px] flex justify-around">
-          <Link href={`/mypage/${params.username}?target=following`}>
+          <Link href={`/mypage/${params.username}/myfollow?target=following`}>
             <TabTrigger value="following" className="text-sm text-neutral-90">
               팔로잉
             </TabTrigger>
           </Link>
-          <Link href={`/mypage/${params.username}?target=follower`}>
+          <Link href={`/mypage/${params.username}/myfollow?target=follower`}>
             <TabTrigger value="follower" className="text-sm text-neutral-90">
               팔로워
             </TabTrigger>
